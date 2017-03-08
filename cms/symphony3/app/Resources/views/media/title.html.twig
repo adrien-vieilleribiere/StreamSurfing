@@ -1,0 +1,12 @@
+{% block body %}
+    <h1 class="center">{{ media.getName }}
+    <!-- ({{ "With Time Controlers"|trans }}) -->
+    <a href="{% if  (media.getMediaType() == '12000') %}http://pul-lup.com/?m={{ media.searchIdPlatform() }}&sa=1{%
+    else %}{{ media.getUrl() }}{%
+    endif %}"
+       title="{% if  (media.getMediaType() == '12000') %}{{ "See on pul-lup"|trans }}{%
+                elseif (media.getMediaType() == '21000') %}{{ "See on youtube"|trans }}{%
+                else %}{{ "See Native"|trans }}{%
+                endif %}"
+       target="_blank">[{{ "source"|trans }}]</a></h1>
+{% endblock %}

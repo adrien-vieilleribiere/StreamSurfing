@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+
+    {{ include('media/title.html.twig',
+    {'media': media}) }}
+
+    {{ include('tc/navSettings.html.twig',
+    {'media': media}) }}
+    {{ include('tc/navConstantTimes.html.twig',
+    {'media': media,
+        'param1': 'tou42'}) }}
+    {% if  (media.getMediaType() == '21000') %} <!-- youtube video -->
+        {{ include('media/play_21001.html.twig', {'media': media}) }}
+    {% endif %}
+
+    {% if  media.getMediaType() == '21001' %} <!--  youtube video in a playlist -->
+        {{ include('media/play_21001.html.twig', {'media': media}) }}
+    {% endif %}
+
+    {% if  media.getMediaType() == '12000' %} <!--  pul-lup audio -->
+        {{ include('media/play_12000.html.twig', {
+            'media': media,
+            'globalMediaPositionFrom0':'0'
+            }) }}
+    {% endif %}
+
+    <div class="chartsContainer">
+        {{ include('tc/navProgressBar.html.twig', {
+            'media': media,
+            'rootId':'progressBarRange'
+        }) }}
+        <a onclick="javascript:ttgUpdateProgress('progressBarRange', 12000, '', 500)"
+           class="btn  btn-primary active">update progress</a>
+        <a onclick="javascript:ttgRecenterPlayhead('progressBarRange', 0)" class="btn btn-primary active">recenter</a>
+
+
+
+    </div>
+    {{ include('tc/navSettingsParams.html.twig',
+        {'media': media,}) }}
+
+{% endblock %}

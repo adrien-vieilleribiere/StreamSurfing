@@ -1,0 +1,10 @@
+{% block body %}
+    <h3>{{ "Default playback rate" | trans }}</h3>
+    <select class="form" id="ttgPlaybackRate{{ playerHtmlId }}default">
+        <option value="0.25">0.25</option>
+        <option value="0.5">0.5</option>
+        <option value="1" selected="selected">1</option>
+        <option value="1.5">1.5</option>
+        <option value="2">2</option>
+    </select>
+{% endblock %}

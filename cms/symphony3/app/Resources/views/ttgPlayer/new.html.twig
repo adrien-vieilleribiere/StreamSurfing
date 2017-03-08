@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <h1>{{ "New Player"|trans }}</h1>
+
+                {{ form_start(playerForm) }}
+                {{ form_widget(playerForm) }}
+
+                <button type="submit" class="btn btn-primary">{{ "Ok"|trans }}</button>
+                {{ form_end(playerForm) }}
+            </div>
+        </div>
+    </div>
+{% endblock %}

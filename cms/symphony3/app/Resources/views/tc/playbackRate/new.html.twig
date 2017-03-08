@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <h1>{{ "New PlaybackRate"|trans }}</h1>
+
+                {{ form_start(TcPlaybackRateForm) }}
+                {{ form_widget(TcPlaybackRateForm) }}
+
+                <button type="submit" class="btn btn-primary">{{ "Ok"|trans }}</button>
+                {{ form_end(TcPlaybackRateForm) }}
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,9 @@
+{% block body %}
+    <a onclick="javascript:$('#{{ modalId }}').modal('show');"
+       class="btn btn-primary active btn-group"
+       title="{{ "Modify Options" | trans }}"
+       data-toggle="modal"
+       data-target="#myModal"
+    >
+        <span class="glyphicon glyphicon-cog"></span> </a>
+{% endblock %}

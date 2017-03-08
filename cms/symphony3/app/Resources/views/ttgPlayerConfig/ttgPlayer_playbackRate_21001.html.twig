@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+
+    {{ include('media/render.html.twig',
+    {'media': media}) }}
+
+    {{ include('tc/playbackRate/playbackRateSlider_21001_full.html.twig',
+    {'media': media}) }}
+
+    {{ include('tc/playbackRate/playbackRateSlider_21001_fullParams.html.twig',
+    {'media': media}) }}
+
+
+{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <style>.center{text-align:center;}</style>
+{% endblock %}

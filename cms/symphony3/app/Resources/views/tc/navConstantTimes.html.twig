@@ -1,0 +1,29 @@
+{% block body %}
+<table id="localNavTable"
+       class="table table-responsive table-condensed"
+       style="border:none"
+       >
+    <tbody>
+    <tr>
+        <td style="border-top: none">
+            <span id="fixedNavPrevious"
+                  class="btn-group container-fluid"
+                  role="group">
+                <a class="btn btn-default active"
+                   onclick="javascript:forward('constant',-20)">-20</a>
+                <a class="btn btn-default active"
+                   onclick="javascript:forward('constant',-10)">-10</a></span>
+        </td>
+        <td style="border-top: none">
+            <span id="fixedNavNext"
+                  class="btn-group container-fluid"
+                  role="group">
+                <a class="btn btn-default active"
+                   onclick="javascript:forward('constant',10)">+10</a>
+                <a class="btn btn-default active"
+                   onclick="javascript:forward('constant',45)">+45</a></span>
+        </td>
+    </tr>
+    </tbody>
+</table>
+{% endblock %}

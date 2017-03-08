@@ -1,0 +1,9 @@
+{% block body %}
+    <button class="btn btn-primary"
+            onclick="nonLinearSlider{{ playerHtmlId }}.noUiSlider.set( document.getElementById('ttgPlaybackRate{{ playerHtmlId }}default').value );
+                    document.getElementById('{{ playerHtmlId }}')
+                        .ttgSetPlaybackRate(document.getElementById('ttgPlaybackRate{{ playerHtmlId }}default').value);"
+            title="{{ "Reset the playback rate"|trans }}"
+
+        ><span class="glyphicon glyphicon-scale" aria-hidden="true"></span> {{ "Reset"|trans }}</button>
+{% endblock %}

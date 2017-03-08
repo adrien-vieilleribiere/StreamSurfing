@@ -1,0 +1,77 @@
+{% block body %}
+    <table
+            class="table table-responsive"
+            style="border:none"
+    >
+        <tbody>
+        <tr valign="middle">
+            <td style="width: 10%">  {{ include('tc/playbackRate/playbackRateSlider_reset.html.twig',
+                {'media': media}) }}   </td>
+            <td style="width: 2em">
+                <input id="ttgPlaybackRate{{ playerHtmlId }}num"
+                       name="ttgPlaybackRate{{ playerHtmlId }}num"
+                       class="custom-control-input ttg ttg{{ playerHtmlId }}"
+                       type="number"
+                       min="0.2"
+                       max="3"
+                       value="1"
+                       step="0.01"
+                       title="{{ 'Change the playback rate' | trans }}"
+                       size="3"
+                       onchange="nonLinearSlider{{ playerHtmlId }}.noUiSlider.set( this.value );
+                               document.getElementById('{{ playerHtmlId }}').ttgSetPlaybackRate(this.value);"
+                /></td>
+            <td style="margin-top: 0.2em">
+                <div id="ttgPlaybackRate{{ playerHtmlId }}slider"
+                     ></div>
+            </td>
+            <td style="width: 5%">  {{ include('tc/playbackRate/playbackRateSliderParams_open.html.twig',
+                {'media': media,
+                    'modalId':"modal_playbackRateSliderParams#{ playerHtmlId }"
+                }) }}   </td>
+        </tr>
+        </tbody>
+    </table>
+    {{ include('tc/playbackRate/playbackRateSliderParams.html.twig',
+    {'media': media,
+        'modalId':"modal_playbackRateSliderParams#{ playerHtmlId }"}) }}
+
+    <script type="application/javascript">
+        var nonLinearSlider{{ playerHtmlId }}
+            = document.getElementById('ttgPlaybackRate{{ playerHtmlId }}slider');
+        noUiSlider.create(nonLinearSlider{{ playerHtmlId }}, {
+            start:  1 ,
+            range: {
+                'min': [  0 ],
+                '25%': [  0.75 ],
+                '50%': [  1 ],
+                '75%': [  1.25 ],
+                'max': [ 4 ]},
+            connect: [true, false],
+        });
+        var connect = nonLinearSlider{{ playerHtmlId }}.querySelectorAll('.noUi-connect');
+        for ( var i = 0; i < connect.length; i++ ) {
+            if (i == 0) {
+                connect[i].classList.add('c-1-before-color');
+            }
+        }
+        nonLinearSlider{{ playerHtmlId }}.noUiSlider.on('update', function(values){
+            // console.log("on change"); console.log(this);
+            // console.log(values);  console.log(values[0]);
+            document.getElementById('ttgPlaybackRate{{ playerHtmlId }}num').value=values[0];
+
+        });
+        nonLinearSlider{{ playerHtmlId }}.noUiSlider.on('change', function(values){
+            // console.log("on change"); console.log(this);
+            // console.log(values);  console.log(values[0]);
+            document.getElementById('{{ playerHtmlId }}').ttgSetPlaybackRate(values[0]);
+
+        });
+
+    </script>
+
+    <style type="text/css">
+        /* .noUi-handle{background-color: #0088CC} */
+        .c-1-before-color{background: #337ab7;}
+    </style>
+{% endblock %}

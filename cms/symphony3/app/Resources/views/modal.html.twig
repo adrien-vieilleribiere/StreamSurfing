@@ -1,0 +1,35 @@
+    <div class="modal fade list-group rounded"
+         id="{{ modalId }}"
+         tabindex="-1"
+         role="dialog"
+         aria-labelledby="myModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header"
+                     style="color: #fff;background-color: #292b2c;">
+                    <button type="button"
+                            class="close text-white"
+                            data-dismiss="modal"><span aria-hidden="true" style="color: #fff;">&times;</span>
+                        <span class="sr-only">{{ "Close"|trans }}</span></button>
+                   <!-- <h1 class="modal-title" id="myModalLabel"></h1> -->
+                    {% block head %}
+                    {% endblock %}
+                </div>
+                <div class="modal-body">
+                    {% block body %}
+                    {% endblock %}
+                </div>
+                <div class="modal-footer">
+                    <!--onclick="javascript:forceCoherenceAll()" -->
+                    {% block foot %}
+                    {% endblock %}
+                    <button type="button"
+                            class="btn btn-default"
+                            data-dismiss="modal">{{ "Close"|trans }}</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% block javascripts %}{% endblock %}

@@ -1,0 +1,46 @@
+{% block body %}
+    <div class="center">
+    <table class="table table-responsive table-condensed"
+           style="border:none"
+    >
+    <tbody>
+    <tr>
+    <td>
+        <div id="playbackRateRadio{{ playerHtmlId }}">
+            <label for="pRBR{{ playerHtmlId }}speedChoice1">1</label>
+            <input  type="radio"
+                    name="pRBR{{ playerHtmlId }}speedChoice1"
+                    id="pRBR{{ playerHtmlId }}speedChoice1"
+                    class="radio-choice speedChange"
+                    value="1"
+                    onclick="document
+                            .getElementById('{{ playerHtmlId }}')
+                            .ttgSetPlaybackRate(1)"/>
+            <script type="application/javascript">
+                $( function() {
+                        forceFixedPRR(
+                            'fixedPlaybackRateRadioValues{{ playerHtmlId }}'
+                            ,'0.25;0.5;1;1.5;2'
+                            , 'playbackRateRadio{{ playerHtmlId }}'
+                            , '{{ playerHtmlId }}');
+                    }
+                    );
+            </script>
+
+        </div>
+    </td>
+        <td>
+            {{ include('tc/playbackRate/playbackRateRadioBlock_open.html.twig',
+            {'media': media,
+                'modalId':"modal_pRBR#{ playerHtmlId }"
+            }) }}
+        </td>
+    </tr>
+    </tbody>
+    </table>
+    </div>
+
+    <style>
+        .speedChange{min-width: 4rem;}
+    </style>
+{% endblock %}

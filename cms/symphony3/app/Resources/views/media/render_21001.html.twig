@@ -1,0 +1,98 @@
+{% block body %}
+    <div class="container-fluid" id="playerContainer">
+        <div id="{{ playerHtmlId }}" data-playerJsId="{{ playerJsId }}" class="player"></div>
+    </div>
+{% endblock %}
+{% block javascripts %}
+    <script type="application/javascript">
+        // 2. This code loads the IFrame Player API code asynchronously.
+        if (document.getElementsByTagName('script')[0].src
+            !== "https://www.youtube.com/iframe_api") {
+            var tag = document.createElement('script');
+            tag.src = "https://www.youtube.com/iframe_api";
+            var firstScriptTag = document.getElementsByTagName('script')[0];
+            firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+        }
+        var {{ playerJsId }} = Object;
+        function onYouTubeIframeAPIReady() {
+            {{ playerJsId }} = new YT.Player('{{ playerHtmlId }}', {
+            height: '200',
+            width: '300',
+            rel: 0,
+            videoId: '{{ media.searchIdPlatform() }}',
+            events: {
+                'onReady': onPlayerReady,
+                'onStateChange': onPlayerStateChange
+            }
+            });
+
+        }
+        function onPlayerReady(event) {
+            document
+                .getElementById('{{ playerHtmlId }}')
+                .ttgGetCurrentTime
+                = function () {
+                return {{ playerJsId }}.getCurrentTime();
+            };
+            document
+                .getElementById('{{ playerHtmlId }}')
+                .ttgSeekTo
+                = function (seconds) {
+                if (seconds >= 0) {
+                    {{ playerJsId }}.seekTo(seconds,true);
+                }
+            }
+            document
+                .getElementById('{{ playerHtmlId }}')
+                .ttgForward
+                = function (type,seconds) {
+                    {{ playerJsId }}.seekTo(
+                        {{ playerJsId }}.getCurrentTime()
+                            +seconds
+                        ,true);
+                };
+            document
+                .getElementById('{{ playerHtmlId }}')
+                .ttgSetPlaybackRate
+                = function (playbackRate) {
+                 {{ playerJsId }}.setPlaybackRate(playbackRate);
+                 };
+        }
+        var done = false;
+        function onPlayerStateChange(event) {
+            if (event.data == YT.PlayerState.PLAYING && !done) {
+                done = true;
+            }
+        }
+
+
+        function goToTime(seconds){
+            player.seekTo(seconds,true);
+        }
+        
+        function getCurrentTime() {
+                return player.getCurrentTime();
+        }
+
+        function getDuration(){
+            return player.getDuration()
+        }
+
+
+        
+    </script>
+{% endblock %}
+{% block stylesheets %}
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <style>
+        #player{resize:both; width:100%}
+        #localNavTable{text-align:center;margin:1em auto}
+        .center{text-align:center;}
+        *[data-type='marker']{cursor:pointer;}
+        .localNavBlock{text-align:center;margin:0em auto 1em auto}
+        .localNavBlock .btn{margin-left:0.5em;margin-right:0.5em;}
+        #progressBarsContainer{width: 100%; background: none repeat scroll 0 0 #373737; margin: 0 0 0 0;  padding: .1em 0 .1em 0;}
+        #progressBarTrack, #progressBarRange{ background: none repeat scroll 0 0 #373737; cursor: pointer; height: 1.4em; border: 2px solid #e4be1d; border-radius: 8px; margin: 10px 0px 10px 0px;text-align: left;}
+        #progressBarTrackBefore,#progressBarRangeBefore{height: 1.4em;width: 0;height: 100%;display: inline-block; background: linear-gradient(to right,#3c2985,#e4be1d);    border-top-left-radius: 8px; border-bottom-left-radius: 8px;}
+    </style>
+{% endblock %}

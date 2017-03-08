@@ -1,0 +1,26 @@
+{% block body %}
+    <h2>
+        {{ "Jumps"|trans }}
+        ({{ "in seconds"|trans }})
+    </h2>
+    <span class="btn-group" role="group">
+		<a onclick="javascript:forceFixedNav('0')"
+           class="btn btn-default active">{{ "None"|trans }}</a>
+		<a onclick="javascript:forceFixedNav('-20;-10;10;45')"
+           class="btn btn-default active">{{ "A few"|trans }}</a>
+		<a onclick="javascript:forceFixedNav('-60;-20;-10;10;20;45')"
+           class="btn btn-default active">{{ "Normal"|trans }}</a>
+		<a onclick="javascript:forceFixedNav('-60;-45;-10;-5;-2;5;10;45;60')"
+           class="btn btn-default active">{{ "A lot"|trans }}</a>
+</span>
+
+    <input type="text"
+           required
+           name="fixedNavTimes"
+           id="fixedNavTimes"
+           class="form-control"
+           pattern="-?[0-9]+(;-?[0-9]+)*"
+           value="-20;-10;10;45"
+           onchange="javascript:createFixedNavButtons('fixedNavTimes','fixedNavPrevious','fixedNavNext')"/>
+    <hr/>
+{% endblock %}

@@ -1,0 +1,43 @@
+{% block body %}
+    <div class="modal fade list-group" id="customModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <!-- onclick="javascript:forceCoherenceAll()" -->
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                    <h1 class="modal-title" id="myModalLabel">{{"Modify Options"|trans}}</h1>
+                </div>
+                <div class="modal-body">
+                    <form id="userParamsForm">
+                        <h2>
+                            {{"Video Size"|trans}}:
+                        </h2>
+                        <input name="videoContainerSize"
+                               id="videoContainerSize"
+                               title=" {{ "Choose the vertical Video Size"|trans }}:"
+                               value="300" min="50" max="2500" step="1"
+                               type="range"
+                               onchange="javascript:resizeVideoContainer('videoContainerSize','player')"/>
+
+                        <hr/>
+
+                        {{ include('tc/navConstantTimesParams.html.twig',
+                        {'media': media,
+                            'param1': 'tou42'}) }}
+
+                        <hr/>
+
+                        {{ include('tc/navProgressBarParams.html.twig',
+                            {'media': media, 'rootId':'progressBarRange'}) }}
+
+
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <!--onclick="javascript:forceCoherenceAll()" -->
+                    <button type="button" class="btn btn-default" data-dismiss="modal">{{ "close"|trans }}</button>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
