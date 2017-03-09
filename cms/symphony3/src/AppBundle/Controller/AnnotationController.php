@@ -16,6 +16,42 @@ use Symfony\Component\HttpFoundation\Response;
 class AnnotationController extends Controller
 {
     /**
+     * @Route("/annotation/{idAnnot}/{idplayerConfig}", name="render_annotation_simple")
+     */
+    public function renderAction($idAnnot, $idplayerConfig)
+    {
+        $em = $this -> getDoctrine() -> getManager();
+        $annot = $em -> getRepository('AppBundle\Entity\Annotation')
+            -> findOneBy(['id' => $idAnnot]);
+        dump($annot);
+        $media = $em -> getRepository('AppBundle\Entity\Media')
+            -> findOneBy(['id' => $annot -> getMedia() ]);
+        dump($media);
+
+        $playerConf = $em -> getRepository('AppBundle\Entity\TtgPlayerConfig')
+            -> findOneBy(['id' => $idplayerConfig]);
+        dump($playerConf);
+
+        $randomInt = random_int(1, 1000000);
+        $playerStrHtml = 'player' . $randomInt;
+        $playerStrJs = 'ttgPlayer' . $randomInt;
+        $annotBoxHtml = 'an' . $idAnnot . ' ' . $randomInt;
+       //die;
+        return $this->render(
+            $playerConf->getRoute(),
+            [
+                'playerConfig' => $playerConf,
+                'media' => $media,
+                'randomKey' => $randomInt,
+                'playerHtmlId' => $playerStrHtml,
+                'playerJsId' => $playerStrJs,
+                'annotBoxId '=> $annotBoxHtml
+            ]);
+       // return new Response("end renderAction Annotation ($idAnnot)");
+    }
+
+
+    /**
      * @Route("/annotation", name="annotation")
      */
     public function listAction()
@@ -57,31 +93,6 @@ class AnnotationController extends Controller
         ]);
     }
 
-    /**
-     * @Route("/annotation/{$id}/render", name="render_annotation")
-     */
-    public function renderAction($id)
-    {
-        $em = $this -> getDoctrine() -> getManager();
-        $tc = $em -> getRepository('AppBundle\Entity\Annotation')
-            -> findOneBy(['id' => $id]);
-        dump($tc);//die;
-        return new Response("end renderAction Annotation ($id)");
-    }
 
 
-    /**
-     * @Route("/annotation/{$id}", name="show_annotation")
-     */
-    public function showAction($id)
-    {
-        $em = $this->getDoctrine()->getManager();
-
-        $tc = $em->getRepository('AppBundle\Entity\Annotation')
-            ->findOneBy(['id' => $id]);
-
-        dump($tc);//die;
-        //dump($media->searchMetadata());
-        return new Response('Show Annotation.'  );
-    }
 }

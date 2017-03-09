@@ -54,7 +54,7 @@ class TcPlaybackRateController extends Controller
     }
 
     /**
-     * @Route("/tcPlaybackRate/{$id}/render", name="render_tcPlaybackRate")
+     * @Route("/tcPlaybackRate/{id}/render", name="render_tcPlaybackRate")
      */
     public function renderAction($id)
     {
@@ -67,7 +67,7 @@ class TcPlaybackRateController extends Controller
 
 
     /**
-     * @Route("/tcPlaybackRate/{$id}", name="show_tcPlaybackRate")
+     * @Route("/tcPlaybackRate/{id}", name="show_tcPlaybackRate")
      */
     public function showAction($id)
     {
