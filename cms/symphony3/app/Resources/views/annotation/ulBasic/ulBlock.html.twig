@@ -1,0 +1,28 @@
+{% extends 'annotBox.html.twig' %}
+{% block annotBody %}
+
+      <div id="ttgAnUl{{ playerHtmlId }}" class="tab-pane">
+        <div id="ttgAnUlNav{{ playerHtmlId }}" class="container-fluid center localNavBlock"></div>
+        <div id="ttgAnUlBody{{ playerHtmlId }}" style="width: 100%; margin:0em auto"></div>
+    </div>
+    <script type="application/javascript">
+        $( function() {
+            getAsJsArrayOfArray(
+                [
+                    {'annotType':'srtFile',
+                        'annotUrl':'/time.adrien-v.com/examples/medias/annot/FLqft-ICVQo__fr__HumanExtendedVersionE1_interviews_themes.srt',
+                        'annotTitle':'Interviews - thèmes',
+                        'itemStart':0}
+                        ],
+                buildAndDrawTextChart,
+                {'chartContainerId':'ttgAnUlBody{{ playerHtmlId }}',
+                    'sizeCriterionId':'item_start',
+                    'offsetCriterionId':'time_start',
+                    'localNavType':'singleFtxt',
+                    'chartOptions':{},
+                    'gadgetContainerId':'toolbar_themes'});
+            }
+        );
+    </script>
+
+{% endblock %}
