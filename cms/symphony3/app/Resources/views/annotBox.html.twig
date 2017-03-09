@@ -1,0 +1,22 @@
+{% block body %}
+    <div class="list-group annotBox">
+        <div class="annot">
+            <div class="annot-content">
+                <div class="annot-header"
+                     style="color: #fff;background-color: #292b2c;">
+                    {% block head %}
+                    {% endblock %}
+                </div>
+                <div class="annot-body">
+                    {% block annotBody %}
+                    {% endblock %}
+                </div>
+                <div class="modal-footer">
+                    {% block annotFoot %}
+                    {% endblock %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{% block javascripts %}{% endblock %}
