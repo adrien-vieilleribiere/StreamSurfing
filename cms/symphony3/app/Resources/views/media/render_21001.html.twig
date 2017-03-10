@@ -55,8 +55,29 @@
                 .getElementById('{{ playerHtmlId }}')
                 .ttgSetPlaybackRate
                 = function (playbackRate) {
-                 {{ playerJsId }}.setPlaybackRate(playbackRate);
-                 };
+                    {{ playerJsId }}.setPlaybackRate(playbackRate);
+                };
+            document
+                .getElementById('{{ playerHtmlId }}')
+                .ttgGetPlaylistIndex
+                = function () {
+                    if ('{{ media.getMediaType() }}' == '21100') {
+                        // youtube playlist
+                        return {{ playerJsId }}.getPlaylistIndex();
+                    }
+                    else{
+                        return 0;
+                     }
+                };
+            document
+                .getElementById('{{ playerHtmlId }}')
+                .ttgPlayMediaAt
+                = function (newPositionInPlaylist) {
+                    if ('{{ media.getMediaType() }}' == '21001') {
+                        // youtube video in a playlist
+                        {{ playerJsId }}.playVideoAt(newPositionInPlaylist);
+                    }
+                };
         }
         var done = false;
         function onPlayerStateChange(event) {
