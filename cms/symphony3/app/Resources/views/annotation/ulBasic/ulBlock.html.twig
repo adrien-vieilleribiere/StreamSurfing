@@ -14,13 +14,15 @@
                         'annotTitle':'Interviews - thèmes',
                         'itemStart':0}
                         ],
-                buildAndDrawTextChart,
-                {'chartContainerId':'ttgAnUlBody{{ playerHtmlId }}',
+                ttgAnnotationUlBasic,
+                {
+                    'chartContainerId':'ttgAnUlBody{{ playerHtmlId }}',
                     'sizeCriterionId':'item_start',
                     'offsetCriterionId':'time_start',
                     'localNavType':'singleFtxt',
                     'chartOptions':{},
-                    'gadgetContainerId':'toolbar_themes'});
+                    'gadgetContainerId':'toolbar_themes',
+                    'playerHtmlId':'{{ playerHtmlId }}'});
             }
         );
     </script>

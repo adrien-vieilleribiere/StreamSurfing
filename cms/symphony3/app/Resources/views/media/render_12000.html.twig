@@ -62,7 +62,18 @@
                     .playbackRate
                     =playbackRate;
             }
-
+        document
+            .getElementById('{{ playerHtmlId }}')
+            .ttgGetPlaylistIndex
+            = function () {
+           return 0;
+        }
+        document
+            .getElementById('{{ playerHtmlId }}')
+            .ttgPlayMediaAt
+            = function (newPositionInPlaylist) {
+            console.log("a implémenter");
+        };
        /* function goToTime(type,seconds){ */
         function goToTime(seconds){
             document
