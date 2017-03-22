@@ -1,6 +1,6 @@
 {% block body %}
     <h1 class="center">{{ media.getName }}
-    <!-- ({{ "With Time Controlers"|trans }}) -->
+    <!-- ({_{ "With Time Controlers"|trans }_}) -->
     <a href="{% if  (media.getMediaType() == '12000') %}http://pul-lup.com/?m={{ media.searchIdPlatform() }}&sa=1{%
     else %}{{ media.getUrl() }}{%
     endif %}"
