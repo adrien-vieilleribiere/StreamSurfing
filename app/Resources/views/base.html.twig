@@ -5,10 +5,11 @@
         <title>{% block title %}Time Travel on Streams{% endblock %}</title>
         <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-        <script src="http://time.adrien-v.com/examples/medias/subtitlesParser.js"></script>
+        <!-- <script src="http://time.adrien-v.com/examples/medias/subtitlesParser.js"></script> -->
+         <script src="{{ asset('av/subtitlesParser.js') }}"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-        <!--<script src="./medias/mate.js"></script> -->
-        <script src="http://time.adrien-v.com/examples/medias/mate_clean.js"></script>
+        <!-- <script src="http://time.adrien-v.com/examples/medias/mate_clean.js"></script> -->
+        <script src="{{ asset('tt.js') }}"></script>
         <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.11.0/bootstrap-table.min.css">
         <script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.11.0/bootstrap-table.min.js"></script>
         <script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.11.0/locale/bootstrap-table-zh-CN.min.js"></script>
