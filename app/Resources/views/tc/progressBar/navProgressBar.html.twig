@@ -1,6 +1,6 @@
 {% block body %}
     <div id="{{ rootId }}"
-        class="progressBarRange"{% if (media.getDuration() > 0) %}
+        class="progressBarRange progress"{% if (media.getDuration() > 0) %}
         data-media-time_start="0"
         data-media-time_end="{{ media.getDuration() }}"
         data-progress-time_start="0"
@@ -8,7 +8,7 @@
         onclick="ttgMoveInsideRange('{{ rootId }}', '{{ playerHtmlId }}')"
     {% endif %}
     ><div id="{{ rootId }}Before"
-          class="progressBarRangeBefore"
+          class="progressBarRangeBefore progress-bar progress-bar-striped active"
         ></div><span id="{{ rootId }}After" class="progressBarRangeAfter"></span></div>
 
 {% endblock %}
