@@ -118,8 +118,9 @@
         *[data-type='marker']{cursor:pointer;}
         .localNavBlock{text-align:center;margin:0em auto 1em auto}
         .localNavBlock .btn{margin-left:0.5em;margin-right:0.5em;}
-        #progressBarsContainer{width: 100%; background: none repeat scroll 0 0 #373737; margin: 0 0 0 0;  padding: .1em 0 .1em 0;}
-        #progressBarTrack, #progressBarRange{ background: none repeat scroll 0 0 #373737; cursor: pointer; height: 1.4em; border: 2px solid #e4be1d; border-radius: 8px; margin: 10px 0px 10px 0px;text-align: left;}
-        #progressBarTrackBefore,#progressBarRangeBefore{height: 1.4em;width: 0;height: 100%;display: inline-block; background: linear-gradient(to right,#3c2985,#e4be1d);    border-top-left-radius: 8px; border-bottom-left-radius: 8px;}
+        #progressBarsContainer{width: 100%; margin: 0 0 0 0;  padding: .1em 0 .1em 0; /*background: none repeat scroll 0 0 #373737; */}
+        #progressBarTrack, #progressBarRange,.progressBarRange{ cursor: pointer; height: 1.4em;/* border: 2px solid #e4be1d; */ border-radius: 8px; margin: 10px 0px 10px 0px;text-align: left;/*background: none repeat scroll 0 0 #373737; */ }
+        #progressBarTrackBefore,#progressBarRangeBefore,.progressBarRangeBefore{height: 1.4em;width: 0;height: 100%;display: inline-block; border-top-left-radius: 8px; border-bottom-left-radius: 8px;/*background: linear-gradient(to right,#3c2985,#e4be1d); */}
+
     </style>
 {% endblock %}
