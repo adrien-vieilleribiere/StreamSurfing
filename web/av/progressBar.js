@@ -21,9 +21,9 @@ function updateOffsetProgress(containerId, proportion) {
 // Effect: updates the progressBarId each recurenceToRedo miliseconds
 //	with a proportion showing the current playHead position into the zoom (time range)
 //	given by properties of the controler.
-function ttgUpdateProgress(progressBarId, mediaType, playerVar, recurenceToRedo) {
-	var curTimeToUpdate = getCurrentTime();
-	// console.log("curTimeToUpdate");	console.log(curTimeToUpdate);
+function ttgUpdateProgress(progressBarId, playerHtmlId, recurenceToRedo) {
+	var curTimeToUpdate = document.getElementById(playerHtmlId).ttgGetCurrentTime() ;
+	 //console.log("curTimeToUpdate");	 console.log(curTimeToUpdate);
 	var actualRangeStartSec = $('#'+progressBarId).attr('data-progress-time_start');
 	var actualRangeEndSec =  $('#'+progressBarId).attr('data-progress-time_end');
 	var actualRangeSizeSec = (actualRangeEndSec - actualRangeStartSec) ;
@@ -44,8 +44,7 @@ function ttgUpdateProgress(progressBarId, mediaType, playerVar, recurenceToRedo)
 		setTimeout(
 			ttgUpdateProgress
 			.bind(null, progressBarId)
-			.bind(null, mediaType)
-			.bind(null, playerVar)
+			.bind(null, playerHtmlId)
 			.bind(null, newRecurenceToRedo),
 			newRecurenceToRedo);
 	}
@@ -57,8 +56,9 @@ var gttgHandleRecenterPlayheadRecurence;
 // 	int recurenceToRedo: xxx todo change it json param setting
 //		'chartRecenteringPosition', 'autoRecenterPlayhead', 'chartRecenteringRecurence'
 // Effect: change the zoom (horizontal) position to put the playhead in the prefered position
-function ttgRecenterPlayhead(controlerId, recurenceToRedo) {
-	var curTimeToCenter = getCurrentTime();
+function ttgRecenterPlayhead(controlerId, playerHtmlId, recurenceToRedo) {
+	// console.log(controlerId + " - " + playerHtmlId + " - " + recurenceToRedo);
+	var curTimeToCenter = document.getElementById(playerHtmlId).ttgGetCurrentTime();
 	var actualRangeStartDate = parseFloat($('#'+controlerId).attr('data-progress-time_start'));
 	var actualRangeEndDate = parseFloat($('#'+controlerId).attr('data-progress-time_end'));
 	var actualRangeSizeSec = (actualRangeEndDate - actualRangeStartDate);
@@ -66,9 +66,16 @@ function ttgRecenterPlayhead(controlerId, recurenceToRedo) {
 		curTimeToCenter - $('#chartRecenteringPosition').val() * actualRangeSizeSec;
 	var idealendTime = idealStartTime + actualRangeSizeSec;
 	var realStartTimeSec =
-		Math.min(Math.max(0, idealStartTime), Math.max(0,getDuration() - actualRangeSizeSec));
+		Math.min(
+			Math.max(0, idealStartTime),
+			Math.max(
+				0,
+				document.getElementById(playerHtmlId).ttgGetDuration()
+					- actualRangeSizeSec));
 	var realEndTimeSec =
-		Math.min(getDuration(), realStartTimeSec + actualRangeSizeSec);
+		Math.min(
+            document.getElementById(playerHtmlId).ttgGetDuration()
+			, realStartTimeSec + actualRangeSizeSec);
 	$('#'+controlerId).attr('data-progress-time_start',realStartTimeSec);
 	$('#'+controlerId).attr('data-progress-time_end',realEndTimeSec);
 	var newRecurenceToRedoBool = $('#autoRecenterPlayhead').is(':checked');
@@ -81,14 +88,16 @@ function ttgRecenterPlayhead(controlerId, recurenceToRedo) {
 					setTimeout(
 						ttgRecenterPlayhead
 						.bind(null, controlerId)
+						.bind(null, playerHtmlId)
 						.bind(null, newRecurenceToRedoTime),
 						newRecurenceToRedoTime);
 			} else {
 				gttgHandleRecenterPlayheadRecurence =
 					setTimeout(
 						ttgRecenterPlayhead
-						.bind(null, controlerId)
-						.bind(null, newRecurenceToRedoTime),
+							.bind(null, controlerId)
+                    	    .bind(null, playerHtmlId)
+							.bind(null, newRecurenceToRedoTime),
 						newRecurenceToRedoTime);
 			}
 		}
@@ -139,30 +148,63 @@ function moveInsideRange(progressBarId, playerVar, annotationChartVar) {
 // Effect: get a click on progressBarId (which size corresponds to annotationChartVar Zoom)
 //		and change the playHead position inside the zoom (time range) given by the annotationChartVar.
 function moveInsideRange2(progressBarId) {
-	var container = document.getElementById(progressBarId);
-	var coordX = relMouseCoordsX(event);
-	var paddingLeftPx = $('#' + progressBarId).css('padding-left');
-	var paddingLeftValue = paddingLeftPx.substr(0, paddingLeftPx.length - 2);
-	var paddingRightPx = $('#' + progressBarId).css('padding-right');
-	var paddingRightValue = paddingRightPx.substr(0, paddingRightPx.length - 2);
-	//var fullWidth=$('#'+progressBarId).innerWidth() - (paddingLeftValue + paddingRightValue);
-	var fullWidth =
-		$('#' + progressBarId).css('width')
-		.substr(0, $('#' + progressBarId).css('width').length - 2);
-	var leftOnLeft = $('#' + progressBarId).offset().left;
-	var coordXinside = coordX - leftOnLeft;
-	var actualRangeStartSec = parseFloat($('#'+progressBarId).attr('data-progress-time_start'));
-	var actualRangeEndSec = parseFloat($('#'+progressBarId).attr('data-progress-time_end'));
-	var actualRangeSizeSec = (actualRangeEndSec - actualRangeStartSec);
-	if (fullWidth > 0) {
-		var timetogoDate = actualRangeStartSec + ((actualRangeSizeSec * coordXinside) / fullWidth);
-		// console.log("timetogoDate:" + timetogoDate);
-		goToTime(timetogoDate);
-	}
-	else{
-		console.log("fullWidth not >0");
-	}
+    var container = document.getElementById(progressBarId);
+    var coordX = relMouseCoordsX(event);
+    var paddingLeftPx = $('#' + progressBarId).css('padding-left');
+    var paddingLeftValue = paddingLeftPx.substr(0, paddingLeftPx.length - 2);
+    var paddingRightPx = $('#' + progressBarId).css('padding-right');
+    var paddingRightValue = paddingRightPx.substr(0, paddingRightPx.length - 2);
+    //var fullWidth=$('#'+progressBarId).innerWidth() - (paddingLeftValue + paddingRightValue);
+    var fullWidth =
+        $('#' + progressBarId).css('width')
+            .substr(0, $('#' + progressBarId).css('width').length - 2);
+    var leftOnLeft = $('#' + progressBarId).offset().left;
+    var coordXinside = coordX - leftOnLeft;
+    var actualRangeStartSec = parseFloat($('#'+progressBarId).attr('data-progress-time_start'));
+    var actualRangeEndSec = parseFloat($('#'+progressBarId).attr('data-progress-time_end'));
+    var actualRangeSizeSec = (actualRangeEndSec - actualRangeStartSec);
+    if (fullWidth > 0) {
+        var timetogoDate = actualRangeStartSec + ((actualRangeSizeSec * coordXinside) / fullWidth);
+        // console.log("timetogoDate:" + timetogoDate);
+        goToTime(timetogoDate);
+    }
+    else{
+        console.log("fullWidth not >0");
+    }
 }
+
+// Inputs:
+//	string progressBarId: the id of a controler (horizontal, left to right)
+// 	string playerHtmlId: the player html id variable
+// Effect: get a click on progressBarId (which size corresponds to annotationChartVar Zoom)
+//		and change the playHead position inside the zoom (time range) given by the annotationChartVar.
+function ttgMoveInsideRange(progressBarId, playerHtmlId) {
+    var container = document.getElementById(progressBarId);
+    var coordX = relMouseCoordsX(event);
+    var paddingLeftPx = $('#' + progressBarId).css('padding-left');
+    var paddingLeftValue = paddingLeftPx.substr(0, paddingLeftPx.length - 2);
+    var paddingRightPx = $('#' + progressBarId).css('padding-right');
+    var paddingRightValue = paddingRightPx.substr(0, paddingRightPx.length - 2);
+    //var fullWidth=$('#'+progressBarId).innerWidth() - (paddingLeftValue + paddingRightValue);
+    var fullWidth =
+        $('#' + progressBarId).css('width')
+            .substr(0, $('#' + progressBarId).css('width').length - 2);
+    var leftOnLeft = $('#' + progressBarId).offset().left;
+    var coordXinside = coordX - leftOnLeft;
+    var actualRangeStartSec = parseFloat($('#'+progressBarId).attr('data-progress-time_start'));
+    var actualRangeEndSec = parseFloat($('#'+progressBarId).attr('data-progress-time_end'));
+    var actualRangeSizeSec = (actualRangeEndSec - actualRangeStartSec);
+    if (fullWidth > 0) {
+        var timetogoSec = actualRangeStartSec + ((actualRangeSizeSec * coordXinside) / fullWidth);
+        // console.log("timetogoSec:" + timetogoSec);
+        //goToTime(timetogoSec);
+		document.getElementById(playerHtmlId).ttgSeekTo(timetogoSec);
+    }
+    else{
+        console.log("fullWidth not >0");
+    }
+}
+
 // Inputs:
 //	Object annotationChartVar: a drawn google chart with {'packages':['annotationchart']}
 // 	string secondsControlerId: the id of a controleur for the offset.

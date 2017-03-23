@@ -36,12 +36,18 @@
             };
             document
                 .getElementById('{{ playerHtmlId }}')
+                .ttgGetDuration
+                = function () {
+                return {{ playerJsId }}.getDuration();
+            };
+            document
+                .getElementById('{{ playerHtmlId }}')
                 .ttgSeekTo
                 = function (seconds) {
                 if (seconds >= 0) {
                     {{ playerJsId }}.seekTo(seconds,true);
                 }
-            }
+            };
             document
                 .getElementById('{{ playerHtmlId }}')
                 .ttgForward

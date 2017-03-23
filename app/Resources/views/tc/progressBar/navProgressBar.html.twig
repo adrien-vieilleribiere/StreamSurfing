@@ -5,9 +5,10 @@
         data-media-time_end="{{ media.getDuration() }}"
         data-progress-time_start="0"
         data-progress-time_end="{{ min (60, media.getDuration() ) }}"
-        onclick="moveInsideRange2('{{ rootId }}')"
+        onclick="ttgMoveInsideRange('{{ rootId }}', '{{ playerHtmlId }}')"
     {% endif %}
     ><div id="{{ rootId }}Before"
           class="progressBarRangeBefore"
         ></div><span id="{{ rootId }}After" class="progressBarRangeAfter"></span></div>
+
 {% endblock %}

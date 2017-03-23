@@ -1,5 +1,11 @@
+{% extends 'modal.html.twig' %}
+
+{% block head %}
+    <h2 class="bg-inverse text-white">
+        {{ "Progress Bars"|trans }}
+    </h2>
+{% endblock %}
 {% block body %}
-    <h2>{{ "Progress Bars"|trans }}</h2>
     <label for="chartProgressRecurence">{{ "Progress Refresh Frequency" | trans }}</label>
     <select id="chartProgressRecurence" name="chartProgressRecurence" class="form-control">
         <option value="0">{{ "Never"|trans }}</option>

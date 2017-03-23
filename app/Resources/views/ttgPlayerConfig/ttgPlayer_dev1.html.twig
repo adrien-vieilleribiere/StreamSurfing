@@ -29,9 +29,9 @@
             'media': media,
             'rootId':'progressBarRange'
         }) }}
-        <a onclick="javascript:ttgUpdateProgress('progressBarRange', 12000, '', 500)"
+        <a onclick="javascript:ttgUpdateProgress('progressBarRange', '{{ playerHtmlId }}', 1500)"
            class="btn  btn-primary active">update progress</a>
-        <a onclick="javascript:ttgRecenterPlayhead('progressBarRange', 0)" class="btn btn-primary active">recenter</a>
+        <a onclick="javascript:ttgRecenterPlayhead('progressBarRange', '{{ playerHtmlId }}', 0)" class="btn btn-primary active">recenter</a>
 
 
 
