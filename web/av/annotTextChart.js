@@ -21,7 +21,6 @@ function filterNodesWithText(inputTextId, rootSearchId) {
 //	with one <li> clicable by segment in data
 // 	click a li will make the playHead move to the start of the corresponding segment.
 function ttgAnnotationUlBasic(objectParams) {
-	// xxxx add test for objectParams nextChoice
 	if (objectParams.localNavType) {
 		var newNavBlockId;
 		if (objectParams.localNavBlockId) {
@@ -49,7 +48,8 @@ function ttgAnnotationUlBasic(objectParams) {
 	}
 	for (var iAnnot = 0; iAnnot < objectParams['annotsArray'].length; iAnnot++) {
 		var newUlRoot = document.createElement("ul");
-		newUlRoot.setAttribute("class", "list-group");
+		newUlRoot.setAttribute("class", "list-group ulBasicScroll");
+		newUlRoot.setAttribute("id", "ulBasic" + objectParams.chartContainerId + '_' + iAnnot);
 		newUlRoot = document.getElementById(objectParams.chartContainerId).appendChild(newUlRoot);
 		for (var segmentkey in objectParams['annotsArray'][iAnnot]['data']) {
 			var segmentObject = objectParams['annotsArray'][iAnnot]['data'][segmentkey];
@@ -122,3 +122,125 @@ function buildAndDrawLocalTableChart(objectParams) {
 		}
 	}
 }
+
+
+// Inputs:
+//	string ulId: the id of a controler (horizontal, left to right)
+//	string playerHtmlId: the player html variable (with function for generic usage)
+// 	int recurenceToRedo: a number of miliseconds to recurently redo the update
+//		(0=no recurent update)
+// Effect: updates the ulId each recurenceToRedo miliseconds
+//	with states classes added to show past/current/future segments.
+function ttgUlUpdateStates(ulId, playerHtmlId, recurenceToRedo) {
+    var curOffset = document.getElementById(playerHtmlId).ttgGetCurrentTime() ;
+    // console.log(curOffset);
+    var curPlaylistItem = document.getElementById(playerHtmlId).ttgGetPlaylistIndex() ;
+    $("#" + ulId + " *[data-type='marker']")
+        .each(function(){
+			if ($(this).attr('data-start')) {
+				var valueThreatedStart =
+					parseFloat($(this).attr('data-start'));
+				var itemThreatedStart =
+					parseInt($(this).attr('data-playlist-item-start'));
+				var valueThreatedEnd =
+					parseFloat($(this).attr('data-end'));
+				var itemThreatedEnd =
+					parseInt($(this).attr('data-playlist-item-end'));
+				var ulClassAdd="";
+                if( itemThreatedEnd < curPlaylistItem ){
+                    ulClassAdd = "markerInPastItem";
+				}
+                if( itemThreatedStart == curPlaylistItem
+					&& itemThreatedEnd == curPlaylistItem ){
+
+                    if(valueThreatedEnd < curOffset){
+                        ulClassAdd = "markerBeforePlayhead";
+					}
+					else{
+                    	if(curOffset < valueThreatedStart ){
+                            ulClassAdd = "markerAfterPlayhead";
+                        }
+                        else{
+                            ulClassAdd = "markerContainingPlayhead";
+						}
+                    }
+                }
+				if( ulClassAdd.length >0){
+                    $(this).removeClass( "markerInPastItem markerBeforePlayhead markerAfterPlayhead markerContainingPlayhead" ).addClass( ulClassAdd )
+				}
+			}
+        });
+	 var newRecurenceToRedo = parseInt($('#ulProgressRecurence').val());
+	 if (newRecurenceToRedo > 0) {
+	 setTimeout(
+         ttgUlUpdateStates
+	 .bind(null, ulId)
+	 .bind(null, playerHtmlId)
+	 .bind(null, newRecurenceToRedo),
+	 newRecurenceToRedo);
+	 }
+}
+
+var ttgAnnotUlRecenterRecurence;
+//  inputs:
+//	string controlerId: the id of the ul controler
+//	string playerHtmlId: the player html variable (with function for generic usage)
+// 	int recurenceToRedo: a number of miliseconds to recurently redo the update
+//		(0=no recurent update)
+// Effect: updates the ulId each recurenceToRedo miliseconds
+//	with states classes added to show past/current/future segments.
+function ttgAnnotUlRecenter(controlerId, playerHtmlId, recurenceToRedo) {
+    // console.log(controlerId + " - " + playerHtmlId + " - " + recurenceToRedo);
+    var curOffset = document.getElementById(playerHtmlId).ttgGetCurrentTime() ;
+    var curPlaylistItem = document.getElementById(playerHtmlId).ttgGetPlaylistIndex() ;
+    bestMarkerFound = null;
+    bestMarkerLi = null;
+    $('#' + controlerId + " *[data-type='marker']")
+        .each( function() {
+			if( $(this).attr('data-start') )
+			{
+				var valueThreated
+					= parseFloat( $(this).attr('data-start') );
+				var itemThreated
+					= parseInt( $(this).attr('data-playlist-item-start') );
+				if( itemThreated <= curPlaylistItem )
+				{
+					if( (valueThreated < curOffset)
+						|| (itemThreated < curPlaylistItem)) {
+						if(bestMarkerFound === null) {
+							bestMarkerFound = valueThreated;
+							bestItemFound = itemThreated;
+                            bestMarkerLi = $(this);
+						}
+						else{
+							if( (itemThreated > bestItemFound) ||
+								( (itemThreated == bestItemFound)
+								&& (curOffset - valueThreated)
+								< (curOffset - bestMarkerFound))) {
+								bestMarkerFound = valueThreated;
+								bestItemFound = itemThreated;
+                                bestMarkerLi = $(this);
+							}
+						}
+					}
+				}
+			}
+
+        });
+	if (bestMarkerFound !== null) {
+        console.log("#########");
+        var refPosLi =  bestMarkerLi.offset().top;
+        console.log("refPosLi: " + refPosLi);
+        var refPosUlLi1 = bestMarkerLi.parent().children().first().offset().top;
+      	var targetScroll =
+            refPosLi
+			- refPosUlLi1;
+		console.log("targetScroll: " + targetScroll);
+        bestMarkerLi.parent().scrollTop(targetScroll);
+	}
+	else{
+		console.log("bestMarkerFound not found");
+        $('#' + controlerId + " *[data-type='marker']").parent().scrollTop(0);
+	}
+}
+

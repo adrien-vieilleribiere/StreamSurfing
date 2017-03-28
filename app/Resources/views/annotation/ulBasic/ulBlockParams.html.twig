@@ -1,0 +1,22 @@
+{% extends 'modal.html.twig' %}
+
+{% block head %}
+    <h2 class="bg-inverse text-white">
+        {{ "Ul Annotation"|trans }}
+    </h2>
+{% endblock %}
+{% block body %}
+    <label for="ulProgressRecurence">{{ "Refresh Frequency" | trans }}</label>
+    <select id="ulProgressRecurence" name="ulProgressRecurence" class="form-control">
+        <option value="0">{{ "Never"|trans }}</option>
+        <option value="10">10 {{"milliseconds"|trans}}</option>
+        <option value="100" selected="selected">100 ms</option>
+        <option value="200">200 ms</option>
+        <option value="400">400 ms</option>
+        <option value="1000">1 {{"second"|trans}}</option>
+        <option value="3000">3 {{"seconds"|trans}}</option>
+        <option value="10000">10 s</option>
+    </select>
+
+{% endblock %}
+

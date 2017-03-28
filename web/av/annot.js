@@ -177,3 +177,4 @@ function ttgBuildAndDrawLocalNavBlock(containerBlockId, containerAnnotId, localN
 	document.getElementById(containerBlockId)
 			.appendChild(newLocalNavNextRoot);	
 }
+
