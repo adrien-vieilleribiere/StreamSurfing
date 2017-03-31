@@ -38,6 +38,7 @@
 
         <script src="{{ asset('av/annot.js') }}"></script>
         <script src="{{ asset('av/annotTextChart.js') }}"></script>
+        <script src="{{ asset('av/annotEdit.js') }}"></script>
 
 
         <script src="{{ asset('av/tt.js') }}"></script>
@@ -61,9 +62,15 @@
     .speedChange{min-width: 5em;}
     .markerInPastItem{border-color:#DDDDDD; opacity: 0.1 }
     .markerBeforePlayhead{border-color:#DDDDDD; opacity: 0.9 }
-    .markerContainingPlayhead{border-color:#cd201f; opacity: 1; border-width: medium;}
+    .markerContainingPlayhead{border-color:#cd201f; opacity: 1; border-width: medium; margin-top: 0.6em;margin-bottom: 0.6em;}
     .markerAfterPlayhead{border-color:#292b2c; opacity: 0.9 }
     .ulBasicScroll{max-height: 18em;overflow-y: scroll;}
+    .segmentTitle{margin-left: 0.8em; margin-right: 0.8em; padding: 0 0.2em;}
+    span.markerTitle, span.lineAnnotDelete{display:inline-block; margin:0.5em 0.2em;}
+    span.startPart,span.middlePart,span.endPart{display:inline-block; margin:0.5em 1em;}
+    input.itemPos{ width: 2rem; display: none}
+    input.marker_start,input.marker_middle, input.marker_end{width: 5rem;}
+
 </style>
     </body>
 </html>

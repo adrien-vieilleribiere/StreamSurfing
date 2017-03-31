@@ -1,0 +1,73 @@
+{% extends 'annotBox.html.twig' %}
+{% block outBefore %}
+    {{ include('annotation/ulEdit/ulBlockParams.html.twig',
+    {  'media': media,
+        'modalId': 'progressUlModal',
+        'rootId':'progressUl'}) }}
+{% endblock %}
+{% block annotBody %}
+
+  <div id="ttgAnUl{{ playerHtmlId }}" class="tab-pane">
+      <table class="table table-responsive table-condensed center"
+             style="border:none"
+      >
+          <tbody>
+          <tr>
+              <td style="border-top: none">
+                  {{ include('annotation/ulEdit/li_new.html.twig',
+                  {  'media': media,
+                      'modalId': 'progressUlModal',
+                      'rootId':'progressUl'}) }}
+              </td>
+              <td style="border-top: none">
+                  {{ include('annotation/ulEdit/ulBlock_refresh.html.twig',
+                  {  'media': media,
+                      'modalId': 'progressUlModal',
+                      'rootId':'progressUl'}) }}
+              </td>
+              <td style="border-top: none">
+                  {{ include('annotation/ulEdit/ulBlock_recenter.html.twig',
+                  {  'media': media,
+                      'modalId': 'progressUlModal',
+                      'rootId':'progressUl'}) }}
+              </td>
+              <td style="border-top: none; min-width: 25%">
+                  <span id="ttgAnUlNav{{ playerHtmlId }}" class="center localNavBlock"></span>
+              </td>
+              <td style="border-top: none">
+                  {{ include('annotation/ulEdit/ulBlockParams_open.html.twig',
+                  {  'media': media,
+                      'modalId': 'progressUlModal',
+                      'rootId':'progressUl'}) }}
+              </td>
+          </tr>
+          </tbody>
+      </table>
+
+
+    <div id="ttgAnUlBody{{ playerHtmlId }}" style="width: 100%; margin:0em auto"></div>
+  </div>
+    <script type="application/javascript">
+        $( function() {
+            getAsJsArrayOfArray(
+                [
+                    {'annotType':'srtFile',
+                        'annotUrl':'/time.adrien-v.com/examples/medias/annot/FLqft-ICVQo__fr__HumanExtendedVersionE1_interviews_themes.srt',
+                        'annotTitle':'Interviews - thèmes',
+                        'itemStart':0}
+                        ],
+                ttgAnnotationUlEdit,
+                {
+                    'chartContainerId':'ttgAnUlBody{{ playerHtmlId }}',
+                    'sizeCriterionId':'item_start',
+                    'offsetCriterionId':'time_start',
+                    'localNavType':'singleFtxt',
+                    'localNavBlockId':'ttgAnUlNav{{ playerHtmlId }}',
+                    'chartOptions':{},
+                    'gadgetContainerId':'toolbar_themes',
+                    'playerHtmlId':'{{ playerHtmlId }}'});
+            }
+        );
+    </script>
+
+{% endblock %}

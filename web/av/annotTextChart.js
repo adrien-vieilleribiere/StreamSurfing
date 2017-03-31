@@ -136,6 +136,7 @@ function ttgUlUpdateStates(ulId, playerHtmlId, recurenceToRedo) {
     // console.log(curOffset);
     var curPlaylistItem = document.getElementById(playerHtmlId).ttgGetPlaylistIndex() ;
     $("#" + ulId + " *[data-type='marker']")
+
         .each(function(){
 			if ($(this).attr('data-start')) {
 				var valueThreatedStart =
@@ -147,25 +148,25 @@ function ttgUlUpdateStates(ulId, playerHtmlId, recurenceToRedo) {
 				var itemThreatedEnd =
 					parseInt($(this).attr('data-playlist-item-end'));
 				var ulClassAdd="";
-                if( itemThreatedEnd < curPlaylistItem ){
+                if ( itemThreatedEnd < curPlaylistItem ) {
                     ulClassAdd = "markerInPastItem";
 				}
-                if( itemThreatedStart == curPlaylistItem
-					&& itemThreatedEnd == curPlaylistItem ){
+                if ( itemThreatedStart == curPlaylistItem
+					&& itemThreatedEnd == curPlaylistItem ) {
 
-                    if(valueThreatedEnd < curOffset){
+                    if (valueThreatedEnd <= curOffset) {
                         ulClassAdd = "markerBeforePlayhead";
 					}
-					else{
-                    	if(curOffset < valueThreatedStart ){
+					else {
+                    	if(curOffset < valueThreatedStart ) {
                             ulClassAdd = "markerAfterPlayhead";
                         }
-                        else{
+                        else {
                             ulClassAdd = "markerContainingPlayhead";
 						}
                     }
                 }
-				if( ulClassAdd.length >0){
+				if( ulClassAdd.length > 0 ){
                     $(this).removeClass( "markerInPastItem markerBeforePlayhead markerAfterPlayhead markerContainingPlayhead" ).addClass( ulClassAdd )
 				}
 			}
@@ -228,18 +229,18 @@ function ttgAnnotUlRecenter(controlerId, playerHtmlId, recurenceToRedo) {
 
         });
 	if (bestMarkerFound !== null) {
-        console.log("#########");
+        // console.log("#########");
         var refPosLi =  bestMarkerLi.offset().top;
         console.log("refPosLi: " + refPosLi);
         var refPosUlLi1 = bestMarkerLi.parent().children().first().offset().top;
       	var targetScroll =
             refPosLi
 			- refPosUlLi1;
-		console.log("targetScroll: " + targetScroll);
+		// console.log("targetScroll: " + targetScroll);
         bestMarkerLi.parent().scrollTop(targetScroll);
 	}
 	else{
-		console.log("bestMarkerFound not found");
+		// console.log("bestMarkerFound not found");
         $('#' + controlerId + " *[data-type='marker']").parent().scrollTop(0);
 	}
 }
