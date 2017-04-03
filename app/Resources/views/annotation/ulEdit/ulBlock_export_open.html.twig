@@ -1,0 +1,6 @@
+{% block body %}
+    <a onclick="javascript:$('#{{ modalId }}').modal('show');"
+       class="btn btn-primary active btn-group"
+       title="{{ "Export Annotation" | trans }}">
+        <span class="glyphicon glyphicon-export"></span> {{ "Export"|trans }}</a>
+{% endblock %}

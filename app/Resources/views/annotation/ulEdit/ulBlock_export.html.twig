@@ -1,0 +1,38 @@
+{% extends 'modal.html.twig' %}
+
+{% block head %}
+    <h2 class="bg-inverse text-white">
+        {{ "Export Annotation"|trans }}
+    </h2>
+{% endblock %}
+{% block body %}
+    <h3 class="bg-inverse text-white">
+        {{ "Choose Export Type"|trans }}
+    </h3>
+    <select name="exportFormat"
+            id="exportFormat"
+            class="form-control">
+        <option value="json_avTV">Annotation (json)</option>
+        <option value="csv_av">Annotation (csv)</option>
+        <option value="srtFile" selected="selected">Annotation (srt)</option>
+       <!-- <option value="html-ul">Fiche de la vidéo et navigation (html)</option> -->
+       <!-- <option value="json-params">Préférences (json)</option> -->
+    </select>
+    <br/><br/>
+    <div class="center">
+        <a onclick="javascript:executeExport('metadata{{ playerHtmlId }}'
+            , 'ttgAnUlBody{{ playerHtmlId }}'
+            , 'ttgAnUlBody{{ playerHtmlId }}'
+            , 'export-html-ul-info'
+            , 'export-html-ul-data'
+            , '{{ playerHtmlId }}')"
+           class="btn btn-primary active btn-group container-fluid">{{ "Export"|trans }} <span
+                    class="glyphicon glyphicon-save" aria-hidden="true"></span></a>
+    </div>
+    <br/><br/>
+    <div id="export-html-ul-info">
+    </div>
+    <code id="export-html-ul-data">
+    </code>
+{% endblock %}
+

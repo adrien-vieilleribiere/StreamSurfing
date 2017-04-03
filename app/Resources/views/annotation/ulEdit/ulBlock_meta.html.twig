@@ -1,0 +1,30 @@
+{% block head %}
+    <h2 class="bg-inverse text-white">
+        {{ "Annotation Metadata"|trans }}
+    </h2>
+{% endblock %}
+{% block body %}
+    <form id="metadata{{ playerHtmlId }}">
+    <h3 class="bg-inverse text-white">
+        {{ "Title"|trans }}
+    </h3>
+   <input name="title" type="text" class="form-control" value="Annotation {{ playerHtmlId }}"/>
+
+    <h3 class="bg-inverse text-white">
+        {{ "User"|trans }}
+    </h3>
+    <input name="user"
+           type="text"
+           class="form-control"
+           value="Anonymous Stream Surfer"/>
+    <input name="info"
+           type="text"
+           value="Created with  {{ app.request.getSchemeAndHttpHost() }}{{path(app.request.attributes.get('_route'),
+           app.request.attributes.get('_route_params')) }}"
+           hidden="hidden"
+           style="display: none"
+
+    />
+        <!--   -->
+    </form>
+{% endblock %}
