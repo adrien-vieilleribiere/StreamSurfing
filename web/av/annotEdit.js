@@ -28,9 +28,10 @@ function ttgAnnotationUlEdit(objectParams) {
 			'singleFtxt', 
 			objectParams.playerHtmlId);
 	}
-	for (var iAnnot = 0; iAnnot < objectParams['annotsArray'].length; iAnnot++) {
+    var annotNum=objectParams['annotsArray'].length;
+	for (var iAnnot = 0; iAnnot < annotNum; iAnnot++) {
 		var newUlRoot = document.createElement("ul");
-		var ulId="ulEdit" + objectParams.chartContainerId + '_' + iAnnot;
+		var ulId = "ul" + iAnnot + objectParams.chartContainerId ;
 		newUlRoot.setAttribute("class", "list-group ulBasicScroll");
 		newUlRoot.setAttribute("id", ulId);
 		newUlRoot = document.getElementById(objectParams.chartContainerId).appendChild(newUlRoot);
@@ -38,7 +39,13 @@ function ttgAnnotationUlEdit(objectParams) {
 			var segmentObject = objectParams['annotsArray'][iAnnot]['data'][segmentkey];
 			//console.log(segmentObject);
 			var newli = document.createElement("li");
-			var liId=ulId + '_' + segmentkey;
+			var liId = objectParams.chartContainerId
+                + segmentkey;
+			if (annotNum > 1) {
+                liId = objectParams.chartContainerId
+                    + 'li' + iAnnot
+                    + '-' + segmentkey;
+            }
 			// newli.append(document.createTextNode(segmentObject.title));
             newli.setAttribute("id", liId);
             newli.setAttribute("class", "list-group-item");
@@ -67,13 +74,17 @@ function ttgAnnotationUlEdit(objectParams) {
 
 
 function ttgSegmentEditTitle(segmentObject, segmentId, objectParams){
-    setTitleInput = document.createElement("input");
-    setTitleInput.id = segmentId+'_title';
+    //setTitleInput = document.createElement("input");
+    setTitleInput = document.createElement("textarea");
+    setTitleInput.id = segmentId + '_title';
     setTitleInput.setAttribute('name', segmentId + '_title');
-    setTitleInput.setAttribute('type', 'text');
-    setTitleInput.setAttribute('value', segmentObject.title);
-    setTitleInput.setAttribute('size', "42");
+   // setTitleInput.setAttribute('type', 'text');
+    //setTitleInput.setAttribute('value', segmentObject.title);
+    setTitleInput.setAttribute('cols', "84");
+    setTitleInput.setAttribute('rows', "2");
     setTitleInput.setAttribute('class', "segmentTitle");
+    setTitleInput.appendChild(document.createTextNode(segmentObject.title));
+    //$('#' + segmentId + '_title').val(segmentObject.title);
     return setTitleInput;
 }
 

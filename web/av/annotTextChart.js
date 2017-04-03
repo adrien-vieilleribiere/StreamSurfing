@@ -231,7 +231,7 @@ function ttgAnnotUlRecenter(controlerId, playerHtmlId, recurenceToRedo) {
 	if (bestMarkerFound !== null) {
         // console.log("#########");
         var refPosLi =  bestMarkerLi.offset().top;
-        console.log("refPosLi: " + refPosLi);
+       // console.log("refPosLi: " + refPosLi);
         var refPosUlLi1 = bestMarkerLi.parent().children().first().offset().top;
       	var targetScroll =
             refPosLi

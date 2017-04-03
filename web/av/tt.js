@@ -1,3 +1,5 @@
+
+
 /****************************************************************/
 /*********************      getAsJsArray    *********************/
 /****************************************************************/
@@ -54,7 +56,7 @@ function getAsJsArray(annotType, annotUrl, callBackFunct, callBackParams) {
 					globalAssocArray[keySegment]['time_end'] = srt.lines[iInSrt].end.timeAllSeconds;
 					globalAssocArray[keySegment]['time_length'] = srt.lines[iInSrt].end.timeAllSeconds - srt.lines[iInSrt].start.timeAllSeconds;
 					globalAssocArray[keySegment]['likeValue'] = 1;
-					globalAssocArray[keySegment]['title'] = srt.lines[iInSrt].subtitle;
+					globalAssocArray[keySegment]['title'] = removeLastLineBreak(srt.lines[iInSrt].subtitle);
 				}
 			}
 			callBackParams["globalAssocArray"] = globalAssocArray;
@@ -187,8 +189,8 @@ function getAsJsArrayOfArray(annotsArray, callBackFunct, callBackParams) {
 										srt.lines[iInSrt].end.timeAllSeconds 
 										- srt.lines[iInSrt].start.timeAllSeconds;
 									localResponseFormated['data'][keySegment]['likeValue'] = 1;
-									localResponseFormated['data'][keySegment]['title'] = 
-										srt.lines[iInSrt].subtitle;
+									localResponseFormated['data'][keySegment]['title'] =
+                                        removeLastLineBreak(srt.lines[iInSrt].subtitle);
 								}
 							}
 							globalRespArrays.push(localResponse);

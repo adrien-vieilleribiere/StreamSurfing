@@ -44,18 +44,55 @@
           </tbody>
       </table>
 
-
-    <div id="ttgAnUlBody{{ playerHtmlId }}" style="width: 100%; margin:0em auto"></div>
   </div>
+    <form id="ttgAnUlBody{{ playerHtmlId }}" style="width: 100%; margin:0em auto"></form>
+    <br/>
+
+    {{ include('annotation/ulEdit/ulBlock_meta.html.twig',
+    {  'media': media,
+        'modalId': 'metaModal{{ playerHtmlId }}',
+        'rootId':'progressUl'}) }}
+    <br/>
+    <div style="width: 100%; margin:0em auto; text-align: center" class="container-fluid">
+
+      {{ include('annotation/ulEdit/ulBlock_export_open.html.twig',
+      {  'media': media,
+          'modalId': 'exportModal',
+          'rootId':'progressUl'}) }}
+    </div>
+      {{ include('annotation/ulEdit/ulBlock_export.html.twig',
+      {  'media': media,
+          'modalId': 'exportModal',
+          'rootId':'progressUl'}) }}
+
+
     <script type="application/javascript">
         $( function() {
             getAsJsArrayOfArray(
-                [
+                /*[
                     {'annotType':'srtFile',
                         'annotUrl':'/time.adrien-v.com/examples/medias/annot/FLqft-ICVQo__fr__HumanExtendedVersionE1_interviews_themes.srt',
                         'annotTitle':'Interviews - thèmes',
                         'itemStart':0}
-                        ],
+                        ]
+                ,
+                */
+
+                    /*
+                     [
+                     {'annotType':'srtFile',
+                     'annotUrl':'/time.adrien-v.com/examples/medias/annot/tmp/test.srt',
+                     'annotTitle':'Interviews - thèmes',
+                     'itemStart':0}
+                     ],
+
+                 */
+                [
+                    {'annotType':'json_avTV',
+                        'annotUrl':'/time.adrien-v.com/examples/medias/annot/tmp/test.json',
+                        'annotTitle':'Interviews - thèmes',
+                        'itemStart':0}
+                ],
                 ttgAnnotationUlEdit,
                 {
                     'chartContainerId':'ttgAnUlBody{{ playerHtmlId }}',

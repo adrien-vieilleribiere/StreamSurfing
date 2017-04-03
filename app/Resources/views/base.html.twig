@@ -15,6 +15,7 @@
         <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.11.0/bootstrap-table.min.css">
         <script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.11.0/bootstrap-table.min.js"></script>
         <script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.11.0/locale/bootstrap-table-zh-CN.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jschardet/1.4.1/jschardet.min.js"></script>
         <script src="{{ asset('noUiSlider.9.2.0/nouislider.min.js') }}"></script>
         <link rel="stylesheet" href="{{ asset('noUiSlider.9.2.0/nouislider.min.css') }}">
 
@@ -26,6 +27,7 @@
             } );
         </script>
 
+        <script src="{{ asset('av/common.js') }}"></script>
         <script src="{{ asset('av/subtitlesParser.js') }}"></script>
         <script src="{{ asset('av/mouse.js') }}"></script>
         <script src="{{ asset('av/timesDates.js') }}"></script>
@@ -39,6 +41,7 @@
         <script src="{{ asset('av/annot.js') }}"></script>
         <script src="{{ asset('av/annotTextChart.js') }}"></script>
         <script src="{{ asset('av/annotEdit.js') }}"></script>
+        <script src="{{ asset('av/annotExport.js') }}"></script>
 
 
         <script src="{{ asset('av/tt.js') }}"></script>
@@ -48,6 +51,7 @@
         {% endblock %}
     </head>
     <body>
+    <textarea cols="100" rows="2">personnes</textarea>
         {% block body %}{% endblock %}
         {% block javascripts %}{% endblock %}
     <script type="application/javascript">
@@ -65,7 +69,7 @@
     .markerContainingPlayhead{border-color:#cd201f; opacity: 1; border-width: medium; margin-top: 0.6em;margin-bottom: 0.6em;}
     .markerAfterPlayhead{border-color:#292b2c; opacity: 0.9 }
     .ulBasicScroll{max-height: 18em;overflow-y: scroll;}
-    .segmentTitle{margin-left: 0.8em; margin-right: 0.8em; padding: 0 0.2em;}
+    .segmentTitle{margin-left: 0.8em; margin-right: 0.8em; padding: 0 0.2em; vertical-align: middle;}
     span.markerTitle, span.lineAnnotDelete{display:inline-block; margin:0.5em 0.2em;}
     span.startPart,span.middlePart,span.endPart{display:inline-block; margin:0.5em 1em;}
     input.itemPos{ width: 2rem; display: none}

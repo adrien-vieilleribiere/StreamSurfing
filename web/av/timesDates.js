@@ -18,6 +18,22 @@ function floatSeconds_2_HMSmS_Obj(timesec) {
 	};
 }
 // Input: float timesec: the number of seconds to convert
+// Output: String: the srt approximation of timesec
+//	(approximated to the closest milisecond)
+function floatSeconds_2_srtTime(timesec) {
+    var hours = Math.floor(timesec / 3600);
+    var minutes = Math.floor((timesec - (3600 * hours)) / 60);
+    var seconds = Math.floor((timesec - ((3600 * hours) + (60 * minutes))));
+    var miliseconds = Math.round(1000 * (timesec - Math.floor(timesec)));
+    return padLeft(hours, 2, '0')
+		+ ':'
+		+ padLeft(minutes, 2, '0')
+        + ':'
+		+ padLeft(seconds, 2, '0')
+		+ ','
+		+ padLeft(miliseconds,3,0);
+}
+// Input: float timesec: the number of seconds to convert
 // Output: Date: the date (2142, 0, 0) + the inputed seconds
 //	(approximated to the closest milisecond)
 function floatSeconds_2_HMSmS_Date(timesec) {
