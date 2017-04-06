@@ -15,6 +15,8 @@ use Symfony\Component\HttpFoundation\Response;
 
 class AnnotationController extends Controller
 {
+
+
     /**
      * @Route("/annotation/{idAnnot}/{idplayerConfig}", name="render_annotation_simple")
      */

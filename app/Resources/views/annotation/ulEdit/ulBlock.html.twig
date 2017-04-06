@@ -1,12 +1,11 @@
 {% extends 'annotBox.html.twig' %}
 {% block outBefore %}
-    {{ include('annotation/ulEdit/ulBlockParams.html.twig',
+  {{ include('annotation/ulEdit/ulBlockParams.html.twig',
     {  'media': media,
         'modalId': 'progressUlModal',
         'rootId':'progressUl'}) }}
 {% endblock %}
 {% block annotBody %}
-
   <div id="ttgAnUl{{ playerHtmlId }}" class="tab-pane">
       <table class="table table-responsive table-condensed center"
              style="border:none"
@@ -76,20 +75,22 @@
                         'itemStart':0}
                         ]
                 ,
-                */
-
-                    /*
-                     [
+                 [
+                 {'annotType':'json_avTV',
+                 'annotUrl':'/time.adrien-v.com/examples/medias/annot/tmp/test.json',
+                 'annotTitle':'Interviews - thèmes',
+                 'itemStart':0}
+                 ],
+                  [
                      {'annotType':'srtFile',
                      'annotUrl':'/time.adrien-v.com/examples/medias/annot/tmp/test.srt',
                      'annotTitle':'Interviews - thèmes',
                      'itemStart':0}
                      ],
-
                  */
                 [
                     {'annotType':'json_avTV',
-                        'annotUrl':'/time.adrien-v.com/examples/medias/annot/tmp/test.json',
+                        'annotUrl':'/time.adrien-v.com/examples/medias/annot/tmp/test2.json',
                         'annotTitle':'Interviews - thèmes',
                         'itemStart':0}
                 ],

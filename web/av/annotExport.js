@@ -97,11 +97,11 @@ function executeExportMain(metaContainerId, linesRoot, exportFormat, outputConta
         var re = new RegExp(linesRoot, 'g');
         exportString = exportString.replace(re, '');
         //var $temp = $("<input>")
-        var $temp = $("<textarea>")
-        $("#exportModal").append($temp);
-        $temp.val(exportString).select();
+        var $tempExport = $("<textarea>")
+        $("#exportModal").append($tempExport);
+        $tempExport.val(exportString).select();
         document.execCommand("copy");
-        $temp.remove();
+        $tempExport.remove();
         resultDoneInfo = document.createElement("h3");
         resultDoneInfo
             .appendChild(

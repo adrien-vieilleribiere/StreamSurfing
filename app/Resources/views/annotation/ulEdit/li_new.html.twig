@@ -1,6 +1,8 @@
 {% block body %}
-    <a onclick="javascript:ttgCreateNewAnnot('ttgAnUlBody{{ playerHtmlId }}', '{{ playerHtmlId }}')"
+    <a onclick="javascript:ttgCreateNewSegment('ttgAnUlBody{{ playerHtmlId }}', '{{ playerHtmlId }}', 1, {})"
        class="btn btn-primary active btn-group"
        title="{{ "Create new Line from playhead" | trans }}">
         <span class="glyphicon glyphicon-plus-sign"></span> </a>
 {% endblock %}
+
+<!-- ttgCreateNewSegment(listContainerId, playerHtmlId, annotScheme, objectParams )-->

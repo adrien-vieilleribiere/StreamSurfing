@@ -61,13 +61,13 @@ function ttgAnnotationUlEdit(objectParams) {
             newli.append(ttgSegmentEditTitle(segmentObject, liId, objectParams));
             ttgAddReplayTimeBlock(segmentObject, liId, 'end' , objectParams);
             ttgAddSetTimeBlock(segmentObject, liId, 'end', objectParams);
+
             /*
             newli.setAttribute(
                 "onclick",
                 "document.getElementById('" + objectParams.playerHtmlId + "')"
                     + '.ttgSeekTo(' + segmentObject.time_start + ')');
             */
-
 		}
 	}
 }
@@ -80,7 +80,7 @@ function ttgSegmentEditTitle(segmentObject, segmentId, objectParams){
     setTitleInput.setAttribute('name', segmentId + '_title');
    // setTitleInput.setAttribute('type', 'text');
     //setTitleInput.setAttribute('value', segmentObject.title);
-    setTitleInput.setAttribute('cols', "84");
+    setTitleInput.setAttribute('cols', "74");
     setTitleInput.setAttribute('rows', "2");
     setTitleInput.setAttribute('class', "segmentTitle");
     setTitleInput.appendChild(document.createTextNode(segmentObject.title));
@@ -88,7 +88,7 @@ function ttgSegmentEditTitle(segmentObject, segmentId, objectParams){
     return setTitleInput;
 }
 
-function addDeleteLine(liNode,idToDelete){
+function addDeleteLine(liNode, idToDelete, options){
     lineDeleteSpan=document.createElement("span");
     lineDeleteSpan.setAttribute('class','btn btn-danger lineAnnotDelete');
     lineDeleteSpan.setAttribute('title','Remove the line');
@@ -132,13 +132,15 @@ function makeIcon_typeAnnot(catId){
     }
 }
 
-function addSetTimeBlock(typeMedia,pos,containerNode,idToSet,typeAnnot){
+function addSetTimeBlock(typeMedia, pos, containerNode, idToSet, typeAnnot){
     // Add Button to set times
     setTimeSpan=document.createElement("span");
     setTimeSpan.id=idToSet+'_set_'+typeAnnot;
-	/* setTimeSpan.setAttribute('title','Ajouter un marqueur '+makeReadable_typeAnnot(typeAnnot,false)+' (à la position courante de lecture)');
+	/* setTimeSpan.setAttribute('title','Ajouter un marqueur '
+	+ makeReadable_typeAnnot(typeAnnot,false)+'
+	(à la position courante de lecture)');
 	 todo: multilingue */
-    setTimeSpan.setAttribute('class','btn btn-primary btn-lg active set'+typeAnnot);
+    setTimeSpan.setAttribute('class', 'btn btn-primary btn-lg active set' + typeAnnot);
     //setTimeSpan.setAttribute('onclick',"javascript:makeAnnot('"+typeMedia+"',"+pos+",'"+idToSet+"','"+typeAnnot+"')");
     setTimeSpanContentIcon=document.createElement("span");
     setTimeSpanContentIcon.setAttribute('class','glyphicon glyphicon-map-marker');
@@ -212,7 +214,7 @@ function ttgAddSetTimeBlock(segmentObject, containerNodeId, typeAnnot , objectPa
     containerNode.appendChild(document.createTextNode(' '));
     containerNode.appendChild(setItemInput);
     // containerNode.appendChild(document.createTextNode(' '));
-    setTimeInput=document.createElement("input");
+    setTimeInput = document.createElement("input");
     setTimeInput.id=containerNodeId+'_time_'+typeAnnot;
     setTimeInput.setAttribute('name',containerNodeId+'_time_'+typeAnnot);
     setTimeInput.setAttribute('type','text');
@@ -237,6 +239,13 @@ function ttgAddReplayTimeBlock(segmentObject, containerNodeId, typeAnnot , objec
     replaySpan.id=containerNodeId+'_play_'+typeAnnot;
     /* replaySpan.setAttribute('title','Revoir à partir du marqueur (de '+makeReadable_typeAnnot(typeAnnot,false)+")");
 	 todo: multilingue */
+    /*if(parseFloat(segmentObject['time_' + typeAnnot])>=0)
+    {
+     replaySpan.setAttribute('class','offsetCheck btn btn-primary');
+    }
+    else{
+     replaySpan.setAttribute('class','offsetCheck btn btn-default');
+    }*/
     replaySpan.setAttribute('class','offsetCheck btn btn-primary');
     switch (typeAnnot){
 		case 'start':
@@ -253,7 +262,7 @@ function ttgAddReplayTimeBlock(segmentObject, containerNodeId, typeAnnot , objec
 					+ "')");
 	}
 
-    replaySpanContentIcon=document.createElement("span");
+    replaySpanContentIcon = document.createElement("span");
     replaySpanContentIcon.setAttribute('class','glyphicon glyphicon-play');
     replaySpanContentIcon.setAttribute('aria-hidden','true');
     replaySpan.appendChild(replaySpanContentIcon);

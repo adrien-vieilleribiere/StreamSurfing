@@ -34,6 +34,14 @@ class Annotation
 
     /**
      * @ORM\Column(type="string")
+     *
+      // todo move to refid of the table AnnotationScheme
+     */
+    private $scheme;
+
+
+    /**
+     * @ORM\Column(type="string")
      * @Assert\Choice(choices = {"srtFile", "csv_av", "json_avTV"}, message = "please use 'srtFile', 'csv_av' or 'json_avTV'")
      */
     // xxxx to move to integer : refid of the table AnnotationType
@@ -71,6 +79,22 @@ class Annotation
     public function setName($name)
     {
         $this->name = $name;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getScheme()
+    {
+        return $this->scheme;
+    }
+
+    /**
+     * @param mixed $scheme
+     */
+    public function setScheme($scheme)
+    {
+        $this->scheme = $scheme;
     }
 
     /**
@@ -138,4 +162,23 @@ class Annotation
                 return '';
         }
     }
+
+     /**
+         * @return mixed
+         */
+        public function searchScheme()
+        {
+
+            switch ($this->getAnnotationType()) {
+                case 'srtFile':
+                    return "1";
+                case 'csv_av':
+                    //todo check columns;
+                case 'json_avTV':
+                    //todo check dimensions;
+                    return "1";
+                default:
+                    return '1';
+            }
+        }
 }
