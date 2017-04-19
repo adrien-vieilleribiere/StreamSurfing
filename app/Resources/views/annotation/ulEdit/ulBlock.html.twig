@@ -42,9 +42,16 @@
           </tr>
           </tbody>
       </table>
+      {{ include('tc/playbackRate/playbackRateRadioBlockParams.html.twig',
+      {   'media': media,
+          'modalId':"modal_pRBR#{ playerHtmlId }"}) }}
+      <form id="ttgAnUlBody{{ playerHtmlId }}" style="width: 100%; margin:0em auto"></form>
+
+      {{ include('tc/playbackRate/playbackRateRadioBlock.html.twig',
+      {'media': media}) }}
 
   </div>
-    <form id="ttgAnUlBody{{ playerHtmlId }}" style="width: 100%; margin:0em auto"></form>
+
     <br/>
 
     {{ include('annotation/ulEdit/ulBlock_meta.html.twig',
@@ -87,10 +94,16 @@
                      'annotTitle':'Interviews - thèmes',
                      'itemStart':0}
                      ],
+                 [
+                 {'annotType':'json_avTV',
+                 'annotUrl':'/time.adrien-v.com/examples/medias/annot/tmp/test2.json',
+                 'annotTitle':'Interviews - thèmes',
+                 'itemStart':0}
+                 ],
                  */
                 [
-                    {'annotType':'json_avTV',
-                        'annotUrl':'/time.adrien-v.com/examples/medias/annot/tmp/test2.json',
+                    {'annotType':'csv_av',
+                        'annotUrl':'/time.adrien-v.com/examples/medias/annot/tmp/test.csv',
                         'annotTitle':'Interviews - thèmes',
                         'itemStart':0}
                 ],

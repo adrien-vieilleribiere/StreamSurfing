@@ -19,6 +19,7 @@ class AnnotationForm extends AbstractType
         $builder
             ->add('name')
             ->add('url')
+            ->add('scheme')
             ->add('media',ChoiceType::class, array(
                 'choices' => $this->buildMediaChoices($options),
                 'choice_translation_domain' => false

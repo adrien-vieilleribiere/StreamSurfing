@@ -64,23 +64,24 @@ function executeExportMain(metaContainerId, linesRoot, exportFormat, outputConta
             exportString += '}';
             break;
         case 'csv_av':
-            exportString +=  '"time_start"\t"time_end"\t"title"' ;
+            //exportString +=  '"time_start"\t"time_end"\t"title"' ;
+            exportString +=  'time_start\ttime_end\ttitle' ;
             /*todo: formalize annotationScheme to generalize with more cols (likeValue, ....)*/
             exportString += '\r\n';
             $("#" + linesRoot + " *[data-type='marker']")
                 .each(function(){
                     if ($(this).attr('data-start') && $(this).attr('data-end') ) {
-                        exportString +=  '"' ;
+                        //exportString +=  '"' ;
                         exportString += $(this).attr('data-start');
-                        exportString +=  '"' ;
+                        //exportString +=  '"' ;
                         exportString +=  '\t' ;
-                        exportString +=  '"' ;
+                        //exportString +=  '"' ;
                         exportString += $(this).attr('data-end');
-                        exportString +=  '"' ;
+                        //exportString +=  '"' ;
                         exportString +=  '\t' ;
-                        exportString +=  '"' ;
-                        exportString += $(this).find( ".segmentTitle" ).first().val();
-                        exportString +=  '"' ;
+                        //exportString +=  '"' ;
+                        exportString += $(this).find( ".segmentTitle" ).first().val().replace(/\r?\n/g, '\\n');
+                        //exportString +=  '"' ;
                         exportString += '\r\n';
                     }});
             break;

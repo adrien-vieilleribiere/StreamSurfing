@@ -37,7 +37,7 @@ function ttgAnnotationUlEdit(objectParams) {
 		newUlRoot = document.getElementById(objectParams.chartContainerId).appendChild(newUlRoot);
 		for (var segmentkey in objectParams['annotsArray'][iAnnot]['data']) {
 			var segmentObject = objectParams['annotsArray'][iAnnot]['data'][segmentkey];
-			//console.log(segmentObject);
+			console.log(segmentObject);
 			var newli = document.createElement("li");
 			var liId = objectParams.chartContainerId
                 + segmentkey;
@@ -50,7 +50,7 @@ function ttgAnnotationUlEdit(objectParams) {
             newli.setAttribute("id", liId);
             newli.setAttribute("class", "list-group-item");
 			newli.setAttribute("data-type", "marker");
-			newli.setAttribute("data-playlist-item-start", segmentObject.item_start);
+			newli.setAttribute("data-playlist-item-start", segmentObject['item_start']);
 			newli.setAttribute("data-start", segmentObject.time_start);
 			newli.setAttribute("data-playlist-item-end", segmentObject.item_end);
 			newli.setAttribute("data-end", segmentObject.time_end);
@@ -74,6 +74,8 @@ function ttgAnnotationUlEdit(objectParams) {
 
 
 function ttgSegmentEditTitle(segmentObject, segmentId, objectParams){
+    console.log("ttgSegmentEditTitle");console.log(segmentObject);
+    console.log("segmentId");console.log(segmentId);
     //setTitleInput = document.createElement("input");
     setTitleInput = document.createElement("textarea");
     setTitleInput.id = segmentId + '_title';
@@ -83,7 +85,10 @@ function ttgSegmentEditTitle(segmentObject, segmentId, objectParams){
     setTitleInput.setAttribute('cols', "74");
     setTitleInput.setAttribute('rows', "2");
     setTitleInput.setAttribute('class', "segmentTitle");
-    setTitleInput.appendChild(document.createTextNode(segmentObject.title));
+    setTitleInput.appendChild(document.createTextNode(segmentObject.title.replace(/\\n/, '\r\n')));
+    console.log('segmentObject-.title');
+    console.log(segmentObject);
+    //$('#' + segmentId + '_title').val(segmentObject['title']);
     //$('#' + segmentId + '_title').val(segmentObject.title);
     return setTitleInput;
 }
@@ -169,6 +174,12 @@ function addSetTimeBlock(typeMedia, pos, containerNode, idToSet, typeAnnot){
 }
 
 function ttgAddSetTimeBlock(segmentObject, containerNodeId, typeAnnot , objectParams){
+    console.log("ttgAddSetTimeBlock");
+    console.log(segmentObject);
+    console.log(containerNodeId);
+    console.log(typeAnnot);
+    console.log(objectParams);
+
     // Add Button to set times
 	var containerNode= document.getElementById(containerNodeId);
     setTimeSpan=document.createElement("span");
