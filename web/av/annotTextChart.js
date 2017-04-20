@@ -54,8 +54,11 @@ function ttgAnnotationUlBasic(objectParams) {
 		for (var segmentkey in objectParams['annotsArray'][iAnnot]['data']) {
 			var segmentObject = objectParams['annotsArray'][iAnnot]['data'][segmentkey];
 			var newli = document.createElement("li");
-			newli.append(document.createTextNode(segmentObject.title));
+            if (segmentObject.title) {
+                newli.append(document.createTextNode(segmentObject.title.replace(/\\n/, '\r\n')));
+            }
 			newli.setAttribute("class", "list-group-item");
+			newli.setAttribute("style", "white-space: pre-wrap;");
 			newli.setAttribute("data-type", "marker");
 			newli.setAttribute("data-playlist-item-start", segmentObject.item_start);
 			newli.setAttribute("data-start", segmentObject.time_start);

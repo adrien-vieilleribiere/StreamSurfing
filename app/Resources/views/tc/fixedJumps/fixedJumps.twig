@@ -6,7 +6,7 @@
     <tbody>
     <tr>
         <td style="border-top: none">
-            <span id="fixedNavPrevious"
+            <span id="fixedNavPrevious{{ playerHtmlId }}"
                   class="btn-group container-fluid"
                   role="group">
                 <a class="btn btn-default active"
@@ -15,13 +15,18 @@
                    onclick="document.getElementById('{{ playerHtmlId }}').ttgForward('constant',-10)">-10</a></span>
         </td>
         <td style="border-top: none">
-            <span id="fixedNavNext"
+            <span id="fixedNavNext{{ playerHtmlId }}"
                   class="btn-group container-fluid"
                   role="group">
                 <a class="btn btn-default active"
                    onclick="document.getElementById('{{ playerHtmlId }}').ttgForward('constant',10)">+10</a>
                 <a class="btn btn-default active"
                    onclick="document.getElementById('{{ playerHtmlId }}').ttgForward('constant',45)">+45</a></span>
+        </td>
+        <td style="border-top: none">
+    {{ include('tc/fixedJumps/fixedJumpsParams_open.html.twig',
+    {'media': media,
+    'modalId':"modal_fixedJumps#{ playerHtmlId }"}) }}
         </td>
     </tr>
     </tbody>

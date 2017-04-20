@@ -50,6 +50,12 @@
       {{ include('tc/playbackRate/playbackRateRadioBlock.html.twig',
       {'media': media}) }}
 
+      {{ include('tc/fixedJumps/fixedJumpsParams.twig',
+      {'media': media,
+          'modalId':"modal_fixedJumps#{ playerHtmlId }"}) }}
+      {{ include('tc/fixedJumps/fixedJumps.twig',
+      {'media': media}) }}
+
   </div>
 
     <br/>
@@ -102,9 +108,9 @@
                  ],
                  */
                 [
-                    {'annotType':'csv_av',
-                        'annotUrl':'/time.adrien-v.com/examples/medias/annot/tmp/test.csv',
-                        'annotTitle':'Interviews - thèmes',
+                    {'annotType':'{{ annotType }}',
+                        'annotUrl':'{{ annotUrl }}',
+                        'annotTitle':'{{ annotName }}',
                         'itemStart':0}
                 ],
                 ttgAnnotationUlEdit,

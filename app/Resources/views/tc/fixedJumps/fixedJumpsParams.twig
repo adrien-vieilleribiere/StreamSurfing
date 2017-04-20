@@ -1,0 +1,30 @@
+{% extends 'modal.html.twig' %}
+
+{% block head %}
+    <h2 class="bg-inverse text-white">
+        {{ "Jumps"|trans }}
+        ({{ "in seconds"|trans }})
+    </h2>
+{% endblock %}
+{% block body %}
+    <span class="btn-group" role="group">
+		<a onclick="javascript:forceFixedNav('0','{{ playerHtmlId }}')"
+           class="btn btn-default active">{{ "None"|trans }}</a>
+		<a onclick="javascript:forceFixedNav('-20;-10;10;45','{{ playerHtmlId }}')"
+           class="btn btn-default active">{{ "A few"|trans }}</a>
+		<a onclick="javascript:forceFixedNav('-60;-20;-10;10;20;45','{{ playerHtmlId }}')"
+           class="btn btn-default active">{{ "Normal"|trans }}</a>
+		<a onclick="javascript:forceFixedNav('-60;-45;-10;-5;-2;5;10;45;60','{{ playerHtmlId }}')"
+           class="btn btn-default active">{{ "A lot"|trans }}</a>
+</span>
+
+    <input type="text"
+           required
+           name="fixedNavTimes{{ playerHtmlId }}"
+           id="fixedNavTimes{{ playerHtmlId }}"
+           class="form-control"
+           pattern="-?[0-9]+(;-?[0-9]+)*"
+           value="-20;-10;10;45"
+           onchange="javascript:createFixedNavButtons('fixedNavTimes{{ playerHtmlId }}','fixedNavPrevious{{ playerHtmlId }}','fixedNavNext{{ playerHtmlId }}','{{ playerHtmlId }}')"/>
+    <hr/>
+{% endblock %}

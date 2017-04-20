@@ -47,7 +47,11 @@ class AnnotationController extends Controller
                 'randomKey' => $randomInt,
                 'playerHtmlId' => $playerStrHtml,
                 'playerJsId' => $playerStrJs,
-                'annotBoxId '=> $annotBoxHtml
+                'annotBoxId ' => $annotBoxHtml,
+                'annotUrl' =>  $annot -> getUrl(),
+                'annotType' => $annot -> getAnnotationType(),
+                'annotScheme' => $annot -> getScheme(),
+                'annotName' => $annot -> getName()
             ]);
        // return new Response("end renderAction Annotation ($idAnnot)");
     }

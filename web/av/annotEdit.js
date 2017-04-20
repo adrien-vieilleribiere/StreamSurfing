@@ -85,7 +85,9 @@ function ttgSegmentEditTitle(segmentObject, segmentId, objectParams){
     setTitleInput.setAttribute('cols', "74");
     setTitleInput.setAttribute('rows', "2");
     setTitleInput.setAttribute('class', "segmentTitle");
-    setTitleInput.appendChild(document.createTextNode(segmentObject.title.replace(/\\n/, '\r\n')));
+    if (segmentObject.title) {
+        setTitleInput.appendChild(document.createTextNode(segmentObject.title.replace(/\\n/, '\r\n')));
+    }
     console.log('segmentObject-.title');
     console.log(segmentObject);
     //$('#' + segmentId + '_title').val(segmentObject['title']);
