@@ -31,11 +31,11 @@ function ttgCreateNewSegment(listContainerId, playerHtmlId, annotSchemeId, objec
      console.log(data)
      })
      */
-    var annotSchemeObj=JSON.parse('[{"deleteLine": "true"},{"replayStart":"true"},{"setStart":"true"},{"setTitle":"true"},{"replayEnd":"true"},{"setEnd":"true"}]');       ;
+    var annotSchemeObj=JSON.parse('[{"deleteLine": "true"},{"replayStart":"true"},{"setStart":"true"},{"setTitle":"true"},{"replayEnd":"true"},{"setEnd":"true"},{"setValDim1":{"type":"numeric","min":"-1","max":"1","default":"0","name":"likeValue"}}]');
     // console.log(annotSchemeObj);
     for(var segValuePos = 0; segValuePos < annotSchemeObj.length; segValuePos++){
-        console.log(annotSchemeObj[segValuePos]);
-       // switch (annotSchemeObj[segValuePos]) {
+        // console.log(annotSchemeObj[segValuePos]);
+        // switch (annotSchemeObj[segValuePos]) {
         for (name in annotSchemeObj[segValuePos]) {
             //console.log(name);
             switch (name) {
@@ -85,6 +85,11 @@ function ttgCreateNewSegment(listContainerId, playerHtmlId, annotSchemeId, objec
                     newSeg[timeStartKey] = curOffset;
                     //(segmentObject, containerNodeId, typeAnnot , playerHtmlId, objectParams)
                     ttgCreateSetTimeBlock(newSeg, liId, 'end' ,playerHtmlId, objectParams);
+                    break;
+                case 'setValDim1':
+                    //switch(['type']){
+                    ttgCreateValueBlock(liId, annotSchemeObj[segValuePos]['setValDim1']);
+                    //}
                     break;
                 case '':
                     break;
@@ -145,19 +150,19 @@ function ttgCreateSetTimeBlock(segmentObject, containerNodeId, typeAnnot , playe
     containerNode.appendChild(setTimeSpan);
     // <input id="an_0_0_pitemstart" name="an_0_0_pitemstart" type="text" class="itemPos" hidden>
     setItemInput=document.createElement("input");
-    setItemInput.id=containerNodeId+'_item_'+typeAnnot;
-    setItemInput.setAttribute('name',containerNodeId+'_item_'+typeAnnot);
-    setItemInput.setAttribute('type','text');
-    setItemInput.setAttribute('value',segmentObject['item_'+typeAnnot]);
-    setItemInput.setAttribute('class','itemPos');
+    setItemInput.id = containerNodeId + '_item_' + typeAnnot;
+    setItemInput.setAttribute('name', containerNodeId + '_item_' + typeAnnot);
+    setItemInput.setAttribute('type', 'text');
+    setItemInput.setAttribute('value', segmentObject['item_' + typeAnnot]);
+    setItemInput.setAttribute('class', 'itemPos');
     containerNode.appendChild(document.createTextNode(' '));
     containerNode.appendChild(setItemInput);
     // containerNode.appendChild(document.createTextNode(' '));
-    setTimeInput=document.createElement("input");
-    setTimeInput.id=containerNodeId+'_time_'+typeAnnot;
-    setTimeInput.setAttribute('name',containerNodeId+'_time_'+typeAnnot);
+    setTimeInput = document.createElement("input");
+    setTimeInput.id = containerNodeId + '_time_' + typeAnnot;
+    setTimeInput.setAttribute('name',containerNodeId + '_time_' + typeAnnot);
     setTimeInput.setAttribute('type','text');
-    setTimeInput.setAttribute('value', segmentObject['time_'+typeAnnot]);
+    setTimeInput.setAttribute('value', segmentObject['time_' + typeAnnot]);
     setTimeInput.setAttribute('onchange', "javascript:updateDataAttributeFromInput('"
         + containerNodeId
         + "','"
@@ -178,8 +183,83 @@ function ttgCreateSetTimeBlock(segmentObject, containerNodeId, typeAnnot , playe
             + typeAnnot
             + "')"
     );
-    setTimeInput.setAttribute('class','marker_'+typeAnnot);
+    setTimeInput.setAttribute('class', 'marker_' + typeAnnot);
     containerNode.appendChild(document.createTextNode(' '));
     containerNode.appendChild(setTimeInput);
 }
 
+function ttgCreateValueBlock(containerNodeId, paramObject){
+    //console.log(paramObject);
+    var containerNode = document.getElementById(containerNodeId);
+    setValInput = document.createElement("input");
+    setValInput.id =
+        paramObject.name
+        + containerNodeId;
+    setValInput.setAttribute(
+        'name',
+        paramObject.name + containerNodeId);
+    switch (paramObject['type']) {
+        case 'numeric':
+            setValInput.setAttribute('type', 'number');
+            break;
+        default:
+            setValInput.setAttribute('type', 'range');
+            break;
+    }
+    if (paramObject['title']) {
+        setValInput.setAttribute(
+            'title',
+            paramObject['title']);
+    }
+    else{
+        setValInput.setAttribute(
+            'title',
+            paramObject['name']);
+    }
+    if (paramObject['min']) {
+        setValInput.setAttribute(
+            'min',
+            paramObject['min']);
+    }
+    else {
+        setValInput.setAttribute(
+            'min',
+            0);
+    }
+    if (paramObject['max']) {
+        setValInput.setAttribute(
+            'max',
+            paramObject['max']);
+    }
+    else {
+        setValInput.setAttribute(
+            'max',
+            1);
+    }
+    if (paramObject['step']) {
+        setValInput.setAttribute(
+            'step',
+            paramObject['step']);
+    }
+    else {
+        setValInput.setAttribute(
+            'step',
+            '0.1');
+    }
+    if (paramObject['style']) {
+        setValInput.setAttribute(
+            'style',
+            paramObject['style']);
+    }
+    else {
+        setValInput.setAttribute(
+            'style',
+            'margin:0.5em; width:4em');
+    }
+    if (paramObject['default']) {
+        setValInput.setAttribute(
+            'value',
+            paramObject['default']);
+    }
+    containerNode.appendChild(setValInput);
+}

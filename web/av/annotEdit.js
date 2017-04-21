@@ -74,8 +74,8 @@ function ttgAnnotationUlEdit(objectParams) {
 
 
 function ttgSegmentEditTitle(segmentObject, segmentId, objectParams){
-    console.log("ttgSegmentEditTitle");console.log(segmentObject);
-    console.log("segmentId");console.log(segmentId);
+    //console.log("ttgSegmentEditTitle");console.log(segmentObject);
+    //console.log("segmentId");console.log(segmentId);
     //setTitleInput = document.createElement("input");
     setTitleInput = document.createElement("textarea");
     setTitleInput.id = segmentId + '_title';
@@ -88,8 +88,8 @@ function ttgSegmentEditTitle(segmentObject, segmentId, objectParams){
     if (segmentObject.title) {
         setTitleInput.appendChild(document.createTextNode(segmentObject.title.replace(/\\n/, '\r\n')));
     }
-    console.log('segmentObject-.title');
-    console.log(segmentObject);
+    //console.log('segmentObject-.title');
+    //console.log(segmentObject);
     //$('#' + segmentId + '_title').val(segmentObject['title']);
     //$('#' + segmentId + '_title').val(segmentObject.title);
     return setTitleInput;
@@ -176,12 +176,12 @@ function addSetTimeBlock(typeMedia, pos, containerNode, idToSet, typeAnnot){
 }
 
 function ttgAddSetTimeBlock(segmentObject, containerNodeId, typeAnnot , objectParams){
-    console.log("ttgAddSetTimeBlock");
+    /*console.log("ttgAddSetTimeBlock");
     console.log(segmentObject);
     console.log(containerNodeId);
     console.log(typeAnnot);
     console.log(objectParams);
-
+    */
     // Add Button to set times
 	var containerNode= document.getElementById(containerNodeId);
     setTimeSpan=document.createElement("span");

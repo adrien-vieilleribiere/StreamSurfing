@@ -56,6 +56,48 @@
       {{ include('tc/fixedJumps/fixedJumps.twig',
       {'media': media}) }}
 
+      <div class="chartsContainer">
+          {{ include('tc/progressBar/navProgressBar.html.twig', {
+              'media':media,
+              'rootId':'progressBarRange'
+          }) }}
+
+
+
+          {{ include('tc/progressBar/navProgressBarParams.html.twig',
+          {  'media': media,
+              'modalId': 'progressBarRangeModal',
+              'rootId':'progressBarRange'}) }}
+
+          <table class="table table-responsive table-condensed center"
+                 style="border:none"
+          >
+              <tbody>
+              <tr>
+                  <td style="border-top: none">
+                      {{ include('tc/progressBar/navProgressBarParams_updateProgress.html.twig',
+                      {  'media': media,
+                          'modalId': 'progressBarRangeModal',
+                          'rootId':'progressBarRange'}) }}
+                  </td>
+                  <td style="border-top: none">
+                      {{ include('tc/progressBar/navProgressBarParams_recenterPlayhead.html.twig',
+                      {  'media': media,
+                          'modalId': 'progressBarRangeModal',
+                          'rootId':'progressBarRange'}) }}
+                  </td>
+                  <td style="border-top: none">
+                      {{ include('tc/progressBar/navProgressBarParams_open.html.twig',
+                      {  'media': media,
+                          'modalId': 'progressBarRangeModal',
+                          'rootId':'progressBarRange'}) }}
+                  </td>
+              </tr>
+              </tbody>
+          </table>
+      </div>
+
+
   </div>
 
     <br/>
