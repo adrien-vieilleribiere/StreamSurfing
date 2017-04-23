@@ -100,7 +100,7 @@ function ttgCreateNewSegment(listContainerId, playerHtmlId, annotSchemeId, objec
         }
         //}
     }
-
+    $('#' + liId + ' textarea')[0].focus();
     /*
     ttgAddReplayTimeBlock(segmentObject, liId, 'start' , objectParams);
 

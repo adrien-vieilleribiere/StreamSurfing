@@ -158,19 +158,19 @@ function addSetTimeBlock(typeMedia, pos, containerNode, idToSet, typeAnnot){
     setTimeSpan.appendChild(typeAnnotSpanIcon);
     containerNode.appendChild(setTimeSpan);
     // <input id="an_0_0_pitemstart" name="an_0_0_pitemstart" type="text" class="itemPos" hidden>
-    setItemInput=document.createElement("input");
-    setItemInput.id=idToSet+'_item_'+typeAnnot;
-    setItemInput.setAttribute('name',idToSet+'_item_'+typeAnnot);
-    setItemInput.setAttribute('type','text');
-    setItemInput.setAttribute('class','itemPos');
+    setItemInput = document.createElement("input");
+    setItemInput.id = idToSet + '_item_' + typeAnnot;
+    setItemInput.setAttribute('name', idToSet + '_item_' + typeAnnot);
+    setItemInput.setAttribute('type', 'text');
+    setItemInput.setAttribute('class', 'itemPos');
     containerNode.appendChild(document.createTextNode(' '));
     containerNode.appendChild(setItemInput);
     // containerNode.appendChild(document.createTextNode(' '));
     setTimeInput=document.createElement("input");
-    setTimeInput.id=idToSet+'_time_'+typeAnnot;
-    setTimeInput.setAttribute('name',idToSet+'_time_'+typeAnnot);
-    setTimeInput.setAttribute('type','text');
-    setTimeInput.setAttribute('class','marker_'+typeAnnot);
+    setTimeInput.id = idToSet + '_time_' + typeAnnot;
+    setTimeInput.setAttribute('name', idToSet + '_time_' + typeAnnot);
+    setTimeInput.setAttribute('type', 'text');
+    setTimeInput.setAttribute('class', 'marker_' + typeAnnot);
     containerNode.appendChild(document.createTextNode(' '));
     containerNode.appendChild(setTimeInput);
 }
@@ -183,12 +183,13 @@ function ttgAddSetTimeBlock(segmentObject, containerNodeId, typeAnnot , objectPa
     console.log(objectParams);
     */
     // Add Button to set times
-	var containerNode= document.getElementById(containerNodeId);
-    setTimeSpan=document.createElement("span");
-    setTimeSpan.id=containerNodeId+'_set_'+typeAnnot;
+	var containerNode = document.getElementById(containerNodeId);
+    setTimeSpan = document.createElement("span");
+    setTimeSpan.id = containerNodeId + '_set_' + typeAnnot;
 	/* setTimeSpan.setAttribute('title','Ajouter un marqueur '+makeReadable_typeAnnot(typeAnnot,false)+' (à la position courante de lecture)');
 	 todo: multilingue */
-    setTimeSpan.setAttribute('class','btn btn-primary btn-lg active set'+typeAnnot);
+    setTimeSpan.setAttribute('class',
+        'btn btn-primary btn-lg active set' + typeAnnot);
     setTimeSpan.setAttribute(
         'onclick',
         "ttgUpdateTextInputFromCurrentTime("
@@ -209,17 +210,17 @@ function ttgAddSetTimeBlock(segmentObject, containerNodeId, typeAnnot , objectPa
             + typeAnnot
             + "')"
     );
-    setTimeSpanContentIcon=document.createElement("span");
+    setTimeSpanContentIcon = document.createElement("span");
     setTimeSpanContentIcon.setAttribute('class','glyphicon glyphicon-map-marker');
     setTimeSpanContentIcon.setAttribute('aria-hidden','true');
     setTimeSpan.appendChild(setTimeSpanContentIcon);
     // setTimeSpanContentTxt=document.createTextNode(makeReadable_typeAnnot(typeAnnot,true));
-    typeAnnotSpanIcon=makeIcon_typeAnnot(typeAnnot)
+    typeAnnotSpanIcon = makeIcon_typeAnnot(typeAnnot)
     setTimeSpan.appendChild(typeAnnotSpanIcon);
     containerNode.appendChild(setTimeSpan);
     // <input id="an_0_0_pitemstart" name="an_0_0_pitemstart" type="text" class="itemPos" hidden>
     setItemInput=document.createElement("input");
-    setItemInput.id=containerNodeId+'_item_'+typeAnnot;
+    setItemInput.id = containerNodeId+'_item_'+typeAnnot;
     setItemInput.setAttribute('name',containerNodeId+'_item_'+typeAnnot);
     setItemInput.setAttribute('type','text');
     setItemInput.setAttribute('value',segmentObject['item_'+typeAnnot]);
@@ -228,7 +229,7 @@ function ttgAddSetTimeBlock(segmentObject, containerNodeId, typeAnnot , objectPa
     containerNode.appendChild(setItemInput);
     // containerNode.appendChild(document.createTextNode(' '));
     setTimeInput = document.createElement("input");
-    setTimeInput.id=containerNodeId+'_time_'+typeAnnot;
+    setTimeInput.id = containerNodeId+'_time_'+typeAnnot;
     setTimeInput.setAttribute('name',containerNodeId+'_time_'+typeAnnot);
     setTimeInput.setAttribute('type','text');
     setTimeInput.setAttribute('value', segmentObject['time_'+typeAnnot]);
@@ -242,14 +243,14 @@ function ttgAddSetTimeBlock(segmentObject, containerNodeId, typeAnnot , objectPa
         + typeAnnot
         + "')"
     );
-    setTimeInput.setAttribute('class','marker_'+typeAnnot);
+    setTimeInput.setAttribute('class', 'marker_' + typeAnnot);
     containerNode.appendChild(document.createTextNode(' '));
     containerNode.appendChild(setTimeInput);
 }
 function ttgAddReplayTimeBlock(segmentObject, containerNodeId, typeAnnot , objectParams){
-    var containerNode= document.getElementById(containerNodeId);
-    replaySpan=document.createElement("span");
-    replaySpan.id=containerNodeId+'_play_'+typeAnnot;
+    var containerNode = document.getElementById(containerNodeId);
+    replaySpan = document.createElement("span");
+    replaySpan.id = containerNodeId + '_play_'+typeAnnot;
     /* replaySpan.setAttribute('title','Revoir à partir du marqueur (de '+makeReadable_typeAnnot(typeAnnot,false)+")");
 	 todo: multilingue */
     /*if(parseFloat(segmentObject['time_' + typeAnnot])>=0)
@@ -259,7 +260,7 @@ function ttgAddReplayTimeBlock(segmentObject, containerNodeId, typeAnnot , objec
     else{
      replaySpan.setAttribute('class','offsetCheck btn btn-default');
     }*/
-    replaySpan.setAttribute('class','offsetCheck btn btn-primary');
+    replaySpan.setAttribute('class', 'offsetCheck btn btn-primary');
     switch (typeAnnot){
 		case 'start':
         case 'end':
