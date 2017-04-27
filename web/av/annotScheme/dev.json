@@ -52,11 +52,11 @@
         },
         { "key": "enter",
           "keyCode" : 13,
-          "action": "setSegmentStart"
+          "action": "editTitle"
         },
         { "key": "backspace",
           "keyCode" : 8,
-          "action": "setSegmentEnd"
+          "action": "scrollToPlayhead"
         },
         { "key": "down-arrow",
           "keyCode" : 40,
@@ -73,6 +73,10 @@
         { "key": "page-down",
           "keyCode" : 34,
           "action": "setSegmentStart"
+        },
+        { "key": "top-left-arrow",
+          "keyCode" : 36,
+          "action": "scrollToPlayhead"
         },
         { "key": "a",
           "keyCode" : 65,

@@ -483,8 +483,18 @@ function applyShortCutActionLi(actionName, actionParams, objectParams) {
                 )[0].focus();
             }
             break;
+        case 'editTitle': //$('#' + liId + ' textarea')[0].focus();
+            if ( $('#' + objectParams['liId']
+                    + ' textarea' )
+                    .length ) {
+                $('#' + objectParams['liId']
+                    + ' textarea' )[0].focus();
+            }
+            break;
+
         default:
             console.log("actionName not known (applyShortCutActionLi)");
+            console.log(actionName);
     }
 
 }
