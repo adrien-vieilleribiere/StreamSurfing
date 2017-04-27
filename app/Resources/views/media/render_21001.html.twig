@@ -51,10 +51,10 @@
             document
                 .getElementById('{{ playerHtmlId }}')
                 .ttgForward
-                = function (type,seconds) {
+                = function (type, seconds) {
                     {{ playerJsId }}.seekTo(
                         {{ playerJsId }}.getCurrentTime()
-                            +seconds
+                            + seconds
                         ,true);
                 };
             document
@@ -63,6 +63,20 @@
                 = function (playbackRate) {
                     {{ playerJsId }}.setPlaybackRate(playbackRate);
                 };
+            document
+                .getElementById('{{ playerHtmlId }}')
+                .ttgTogglePlayPause
+                = function () {
+                //console.log({{ playerJsId }}.getPlayerState());
+                switch ( {{ playerJsId }}.getPlayerState() ) {
+                    case 1:
+                        {{ playerJsId }}.pauseVideo();
+                        break;
+                    default:
+                        {{ playerJsId }}.playVideo();
+                        break;
+                }
+            }
             document
                 .getElementById('{{ playerHtmlId }}')
                 .ttgGetPlaylistIndex

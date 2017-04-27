@@ -1,5 +1,5 @@
 {% block body %}
-    <a onclick="javascript:ttgCreateNewSegment('ttgAnUlBody{{ playerHtmlId }}', '{{ playerHtmlId }}', 1, {})"
+    <a onclick="javascript:ttgCreateNewSegment('ttgAnUlBody{{ playerHtmlId }}', '{{ playerHtmlId }}', '{{ annotSchemeRoute }}', {'focus': 'textarea'})"
        class="btn btn-primary active btn-group"
        title="{{ "Create new Line from playhead" | trans }}">
         <span class="glyphicon glyphicon-plus-sign"></span> </a>

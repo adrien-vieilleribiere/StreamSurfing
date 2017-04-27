@@ -29,6 +29,9 @@ class AnnotationController extends Controller
         $media = $em -> getRepository('AppBundle\Entity\Media')
             -> findOneBy(['id' => $annot -> getMedia() ]);
         dump($media);
+        $annotScheme = $em -> getRepository('AppBundle\Entity\TtgAnnotationScheme')
+            -> findOneBy(['id' => $annot -> getScheme() ]);
+        dump($annotScheme);
 
         $playerConf = $em -> getRepository('AppBundle\Entity\TtgPlayerConfig')
             -> findOneBy(['id' => $idplayerConfig]);
@@ -38,6 +41,7 @@ class AnnotationController extends Controller
         $playerStrHtml = 'player' . $randomInt;
         $playerStrJs = 'ttgPlayer' . $randomInt;
         $annotBoxHtml = 'an' . $idAnnot . ' ' . $randomInt;
+        $annotSchemeRoute = $annotScheme -> getRoute();
        //die;
         return $this->render(
             $playerConf->getRoute(),
@@ -51,7 +55,9 @@ class AnnotationController extends Controller
                 'annotUrl' =>  $annot -> getUrl(),
                 'annotType' => $annot -> getAnnotationType(),
                 'annotScheme' => $annot -> getScheme(),
-                'annotName' => $annot -> getName()
+                'annotName' => $annot -> getName(),
+                'annotScheme' => $annotScheme,
+                'annotSchemeRoute' => $annotSchemeRoute
             ]);
        // return new Response("end renderAction Annotation ($idAnnot)");
     }
@@ -73,7 +79,7 @@ class AnnotationController extends Controller
     }
 
     /**
-     * @Route("/annotation/new", name="new_annotation")
+     * @Route("/annotation/new", name="new_annotation", options={"expose"=true})
      */
     public function newAction(Request $request)
     {

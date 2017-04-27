@@ -60,8 +60,19 @@
                 document
                     .getElementById('{{ playerJsId }}')
                     .playbackRate
-                    =playbackRate;
+                    = playbackRate;
             }
+        document
+            .getElementById('{{ playerHtmlId }}')
+            .ttgTogglePlayPause
+            = function () {
+            if (! (document.getElementById('{{ playerJsId }}').paused)) {
+                document.getElementById('{{ playerJsId }}').pause();
+            }
+            else {
+                document.getElementById('{{ playerJsId }}').play();
+            }
+        }
         document
             .getElementById('{{ playerHtmlId }}')
             .ttgGetPlaylistIndex

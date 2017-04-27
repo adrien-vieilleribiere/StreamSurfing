@@ -37,7 +37,7 @@ function ttgAnnotationUlEdit(objectParams) {
 		newUlRoot = document.getElementById(objectParams.chartContainerId).appendChild(newUlRoot);
 		for (var segmentkey in objectParams['annotsArray'][iAnnot]['data']) {
 			var segmentObject = objectParams['annotsArray'][iAnnot]['data'][segmentkey];
-			console.log(segmentObject);
+            // console.log(segmentObject);
 			var newli = document.createElement("li");
 			var liId = objectParams.chartContainerId
                 + segmentkey;
@@ -302,7 +302,7 @@ function ttgUpdateTextInputFromCurrentTime(playerHtmlId, inputId) {
 }
 
 function updateDataAttributeFromInput(toChangeNodeId, inputId, typeAnnot){
-	console.log(toChangeNodeId);
+	// console.log(toChangeNodeId);
 	var dataDim = 'data-' + typeAnnot;
 	document
 		.getElementById(toChangeNodeId)
