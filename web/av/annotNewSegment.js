@@ -125,9 +125,9 @@ function ttgCreateNewSegment(listContainerId, playerHtmlId, annotSchemeRoute, ob
             }
 
         }
-        else{
+        /*else{
             console.log("no focus");
-        }
+        }*/
     });
     /*
     var annotSchemeUrl =  Routing.generate("new_annotation");
@@ -416,6 +416,21 @@ function applyShortCutActionLi(actionName, actionParams, objectParams) {
                 .ttgSeekTo(timeToGo);
             break;
         case 'deleteSegment':
+            if (document.getElementById(objectParams['liId']).nextElementSibling) {
+                $('#' + document.getElementById(objectParams['liId']).nextElementSibling.id
+                    + ' .shortcutLineControls'
+                )[0].focus();
+            }
+            else {
+                if (document.getElementById(objectParams['liId']).previousElementSibling
+                    &&  $('#' + document.getElementById(objectParams['liId']).previousElementSibling.id
+                        + ' .shortcutLineControls'
+                    ).length ) {
+                    $('#' + document.getElementById(objectParams['liId']).previousElementSibling.id
+                        + ' .shortcutLineControls'
+                    )[0].focus();
+                }
+            }
             removeAnnotLine(objectParams['liId']);
             break;
         case 'createNewSegment':
@@ -442,13 +457,31 @@ function applyShortCutActionLi(actionName, actionParams, objectParams) {
             else {
                 console.log('actionParams[1] not found');
             }
-            // xxxxx
+            // xxxxx todo parameter the path
             ttgCreateNewSegment( 'ttgAnUlBody' + objectParams['playerHtmlId'],
                 objectParams['playerHtmlId'],
                 ['/av/annotScheme/dev.json'],
                 objectParamsCopy);
             break;
-        case '':
+        case 'goToPreviousLine':
+            if (document.getElementById(objectParams['liId']).previousElementSibling
+                &&  $('#' + document.getElementById(objectParams['liId']).previousElementSibling.id
+                    + ' .shortcutLineControls'
+                ).length ) {
+                $('#' + document.getElementById(objectParams['liId']).previousElementSibling.id
+                    + ' .shortcutLineControls'
+                )[0].focus();
+            }
+            break;
+        case 'goToNextLine':
+            if (document.getElementById(objectParams['liId']).nextElementSibling
+                &&  $('#' + document.getElementById(objectParams['liId']).nextElementSibling.id
+                    + ' .shortcutLineControls' )
+                    .length ) {
+                $('#' + document.getElementById(objectParams['liId']).nextElementSibling.id
+                    + ' .shortcutLineControls'
+                )[0].focus();
+            }
             break;
         default:
             console.log("actionName not known (applyShortCutActionLi)");

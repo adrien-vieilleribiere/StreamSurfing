@@ -50,13 +50,29 @@
           "keyCode" : 39,
           "action": "reviewSegmentEnd"
         },
-        { "key": "down-arrow",
-          "keyCode" : 40,
+        { "key": "enter",
+          "keyCode" : 13,
           "action": "setSegmentStart"
         },
-        { "key": "down-up",
-          "keyCode" : 38,
+        { "key": "backspace",
+          "keyCode" : 8,
           "action": "setSegmentEnd"
+        },
+        { "key": "down-arrow",
+          "keyCode" : 40,
+          "action": "goToNextLine"
+        },
+        { "key": "up-arrow",
+          "keyCode" : 38,
+          "action": "goToPreviousLine"
+        },
+        { "key": "page-up",
+          "keyCode" : 33,
+          "action": "setSegmentEnd"
+        },
+        { "key": "page-down",
+          "keyCode" : 34,
+          "action": "setSegmentStart"
         },
         { "key": "a",
           "keyCode" : 65,
