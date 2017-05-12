@@ -66,6 +66,7 @@ class MediaController extends Controller
             case '21000':
             case '21001':
             case '12000':
+            case '20001':
                 return $this -> render(
                     /*'media/play_21001.html.twig'*/
                     'media/play.html.twig', [

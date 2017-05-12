@@ -13,4 +13,8 @@
             'globalMediaPositionFrom0':'0'
         }) }}
     {% endif %}
+    {% if  (media.getMediaType() == '20001') %} <!-- mp4 native video -->
+        {{ include('media/render_20001.html.twig', {'media': media,
+            'globalMediaPositionFrom0':'0'}) }}
+    {% endif %}
 {% endblock %}

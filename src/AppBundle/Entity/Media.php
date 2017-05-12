@@ -172,6 +172,11 @@ class Media
                 }
                 return $idPlatform;
                 break;
+            case 10001 : // mp3
+            case 20001 : // mp4
+                $idPlatform=str_replace('.','_',$urlPi['basename']);
+                return $idPlatform;
+                break;
             default:
                 return '';
         }
@@ -213,6 +218,16 @@ class Media
                     else{
                         return 0; // unknown
                     }
+                }
+                break;
+            case 'http://time.adrien-v.com/private':
+                switch ($urlPi['extension']){
+                    case 'mp3':
+                        return 10001;
+                    case 'mp4':
+                        return 20001;
+                    default:
+                        return 0; // unknown
                 }
                 break;
             default:
