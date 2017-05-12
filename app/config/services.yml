@@ -7,3 +7,11 @@ services:
 #    service_name:
 #        class: AppBundle\Directory\ClassName
 #        arguments: ["@another_service_name", "plain_value", "%parameter_name%"]
+    my_facebook_authenticator:
+        class: AppBundle\Security\MyFacebookAuthenticator
+        autowire: true
+        # use autowiring, OR you can specify the argument manually
+        # arguments:
+        #     - '@oauth2.registry'
+        #     - '@doctrine.orm.entity_manager'
+        #     - '@router'
