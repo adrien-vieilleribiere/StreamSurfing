@@ -17,10 +17,10 @@ security:
             anonymous: ~
             # activate different ways to authenticate
 
-            remember_me:
-                secret:      "%secret%"
-                lifetime: 604800 # 1 week in seconds
-                path:     /
+            #remember_me:
+            #    secret:      "%secret%"
+            #    lifetime: 604800 # 1 week in seconds
+            #    path:     /
 
             # http_basic: ~
             # http://symfony.com/doc/current/security.html#a-configuring-how-your-users-will-authenticate
