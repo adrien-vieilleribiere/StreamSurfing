@@ -31,13 +31,14 @@ function ttgCreateNewSegment(listContainerId, playerHtmlId, annotSchemeRoute, ob
     newli = document.getElementById(annotContainerToInsertId).appendChild(newli);
     var annotSchemeUrl = '/av/annotScheme/basic.json';
     if (annotSchemeRoute.length) {
-        //console.log("AnnotSchemeUrl found" + annotSchemeRoute);
+        console.log("AnnotSchemeUrl found" + annotSchemeRoute);
        annotSchemeUrl = annotSchemeRoute;
     }
     else{
         console.log("No annotSchemeUrl found");
     }
     //  var annotSchemeObj = JSON.parse('[{"deleteLine": "true"},{"replayStart":"true"},{"setStart":"true"},{"setTitle":"true"},{"replayEnd":"true"},{"setEnd":"true"},{"setValDim1":{"type":"numeric","min":"-1","max":"1","default":"0","name":"likeValue"}}]');
+    //$.get(annotSchemeUrl, function (data) {
     $.get(annotSchemeUrl, function (data) {
         //console.log(data);
         for (var segValuePos = 0; segValuePos < data.length; segValuePos++) {

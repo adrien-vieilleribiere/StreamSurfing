@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <h1>{{ "New StreamSurfing Model"|trans }}</h1>
+
+                {{ form_start(StreamSurfModelNewForm) }}
+                {{ form_widget(StreamSurfModelNewForm) }}
+
+                <button type="submit" class="btn btn-primary">{{ "Ok"|trans }}</button>
+                {{ form_end(StreamSurfModelNewForm) }}
+            </div>
+        </div>
+    </div>
+{% endblock %}

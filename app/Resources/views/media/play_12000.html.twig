@@ -16,17 +16,17 @@
             var mediaElement = document
                 . getElementById('a{{ globalMediaPositionFrom0 }}');
             var newOffset = mediaElement.currentTime
-                    + seconds;
+                + seconds;
             if (newOffset >=0 ) {
-               mediaElement.currentTime = newOffset;
+                mediaElement.currentTime = newOffset;
             }
         }
-       /* function goToTime(type,seconds){ */
+        /* function goToTime(type,seconds){ */
         function goToTime(seconds){
             document
                 . getElementById('a{{ globalMediaPositionFrom0 }}')
-                    .currentTime
-                        = seconds ;
+                .currentTime
+                = seconds ;
         }
         function getCurrentTime() {
             return document

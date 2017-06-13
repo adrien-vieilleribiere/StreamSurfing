@@ -52,7 +52,7 @@ class PlaylistController extends Controller
             return new Response("Playlist created.");
         }
 
-        return $this->render('playlist/new.html.twig', [
+        return $this->render('playlist/newModel.html.twig', [
             'playlistForm' => $form->createView()
         ]);
     }

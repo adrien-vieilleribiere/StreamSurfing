@@ -48,7 +48,7 @@ class TcPlaybackRateController extends Controller
             return new Response("tcPlaybackRate created.<pre><code>".print_r($tcPR,true).'</code></pre>');
         }
 
-        return $this->render('tc/playbackRate/new.html.twig', [
+        return $this->render('tc/playbackRate/newModel.html.twig', [
             'TcPlaybackRateForm' => $form->createView()
         ]);
     }

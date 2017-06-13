@@ -5,9 +5,8 @@ namespace AppBundle\Entity;
 use Doctrine\ORM\EntityRepository;
 
 /**
- * AnnotationRepository
- *
+ * WaveRepository
  */
-class AnnotationRepository extends EntityRepository
+class WaveRepository extends EntityRepository
 {
 }

@@ -5,9 +5,8 @@ namespace AppBundle\Entity;
 use Doctrine\ORM\EntityRepository;
 
 /**
- * AnnotationRepository
- *
+ * StreamSurfingRepository
  */
-class AnnotationRepository extends EntityRepository
+class StreamSurfingRepository extends EntityRepository
 {
 }

@@ -1,0 +1,8 @@
+{% block body %}
+    {{ include('media/title.html.twig',
+    {'media': media}) }}
+
+    {{ include('media/render.html.twig',
+    {'media': media}) }}
+{% endblock %}
+

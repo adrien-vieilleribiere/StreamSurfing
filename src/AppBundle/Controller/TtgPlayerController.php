@@ -49,7 +49,7 @@ class TtgPlayerController extends Controller
             return new Response("Player created.<pre><code>".print_r($player,true).'</code></pre>');
         }
 
-        return $this->render('ttgPlayer/new.html.twig', [
+        return $this->render('ttgPlayer/newModel.html.twig', [
             'playerForm' => $form->createView()
         ]);
     }

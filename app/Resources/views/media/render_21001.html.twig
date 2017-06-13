@@ -16,14 +16,14 @@
         var {{ playerJsId }} = Object;
         function onYouTubeIframeAPIReady() {
             {{ playerJsId }} = new YT.Player('{{ playerHtmlId }}', {
-            height: '200',
-            width: '300',
-            rel: 0,
-            videoId: '{{ media.searchIdPlatform() }}',
-            events: {
-                'onReady': onPlayerReady,
-                'onStateChange': onPlayerStateChange
-            }
+                height: '200',
+                width: '300',
+                rel: 0,
+                videoId: '{{ media.searchIdPlatform() }}',
+                events: {
+                    'onReady': onPlayerReady,
+                    'onStateChange': onPlayerStateChange
+                }
             });
 
         }
@@ -52,52 +52,52 @@
                 .getElementById('{{ playerHtmlId }}')
                 .ttgForward
                 = function (type, seconds) {
-                    {{ playerJsId }}.seekTo(
-                        {{ playerJsId }}.getCurrentTime()
-                            + seconds
-                        ,true);
-                };
+                {{ playerJsId }}.seekTo(
+                {{ playerJsId }}.getCurrentTime()
+                + seconds
+                    ,true);
+            };
             document
                 .getElementById('{{ playerHtmlId }}')
                 .ttgSetPlaybackRate
                 = function (playbackRate) {
-                    {{ playerJsId }}.setPlaybackRate(playbackRate);
-                };
+                {{ playerJsId }}.setPlaybackRate(playbackRate);
+            };
             document
                 .getElementById('{{ playerHtmlId }}')
                 .ttgTogglePlayPause
                 = function () {
                 //console.log({{ playerJsId }}.getPlayerState());
                 switch ( {{ playerJsId }}.getPlayerState() ) {
-                    case 1:
-                        {{ playerJsId }}.pauseVideo();
-                        break;
-                    default:
-                        {{ playerJsId }}.playVideo();
-                        break;
+                case 1:
+                    {{ playerJsId }}.pauseVideo();
+                    break;
+                default:
+                    {{ playerJsId }}.playVideo();
+                    break;
                 }
-            }
+                }
             document
                 .getElementById('{{ playerHtmlId }}')
                 .ttgGetPlaylistIndex
                 = function () {
-                    if ('{{ media.getMediaType() }}' == '21100') {
-                        // youtube playlist
-                        return {{ playerJsId }}.getPlaylistIndex();
-                    }
-                    else{
-                        return 0;
-                     }
-                };
+                if ('{{ media.getMediaType() }}' == '21100') {
+                    // youtube playlist
+                    return {{ playerJsId }}.getPlaylistIndex();
+                }
+                else{
+                    return 0;
+                }
+            };
             document
                 .getElementById('{{ playerHtmlId }}')
                 .ttgPlayMediaAt
                 = function (newPositionInPlaylist) {
-                    if ('{{ media.getMediaType() }}' == '21001') {
-                        // youtube video in a playlist
-                        {{ playerJsId }}.playVideoAt(newPositionInPlaylist);
-                    }
-                };
+                if ('{{ media.getMediaType() }}' == '21001') {
+                    // youtube video in a playlist
+                    {{ playerJsId }}.playVideoAt(newPositionInPlaylist);
+                }
+            };
         }
         var done = false;
         function onPlayerStateChange(event) {
@@ -110,9 +110,9 @@
         function goToTime(seconds){
             player.seekTo(seconds,true);
         }
-        
+
         function getCurrentTime() {
-                return player.getCurrentTime();
+            return player.getCurrentTime();
         }
 
         function getDuration(){
@@ -120,7 +120,7 @@
         }
 
 
-        
+
     </script>
 {% endblock %}
 {% block stylesheets %}

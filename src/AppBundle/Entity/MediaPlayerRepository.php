@@ -5,9 +5,8 @@ namespace AppBundle\Entity;
 use Doctrine\ORM\EntityRepository;
 
 /**
- * AnnotationRepository
- *
+ * MediaPlayerRepository
  */
-class AnnotationRepository extends EntityRepository
+class MediaPlayerRepository extends EntityRepository
 {
 }

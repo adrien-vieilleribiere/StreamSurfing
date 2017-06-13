@@ -1,0 +1,184 @@
+1
+00:00:00,789 --> 00:00:04,049
+Ligaran couvre toute la chaîne de
+production du livre,
+
+2
+00:00:04,640 --> 00:00:06,700
+qu'il soit numérique ou papier,
+
+3
+00:00:06,700 --> 00:00:10,320
+grâce à des outils industriels 
+lui permettant d'orchestrer la
+
+4
+00:00:10,320 --> 00:00:14,639
+production jusqu'à la distribution du
+produit physique dans les différents
+
+5
+00:00:14,639 --> 00:00:17,199
+canaux de vente mondiaux.
+
+6
+00:00:17,199 --> 00:00:20,699
+La production est organisée à
+partir d'une base de données permettant
+
+7
+00:00:20,699 --> 00:00:24,710
+de renseigner de manière très fine les
+métadonnées de l'oeuvre concernée.
+
+8
+00:00:26,169 --> 00:00:29,050
+Le workflow accompagne chaque étape de
+la production,
+
+9
+00:00:29,050 --> 00:00:31,079
+et permet de suivre celle-ci
+
+10
+00:00:31,079 --> 00:00:35,500
+depuis l'assignation des travaux aux 
+prestataires, jusqu'à la validation des livraisons.
+
+11
+00:00:37,170 --> 00:00:39,660
+La chaîne de production de Ligaran est générique :
+
+12
+00:00:39,660 --> 00:00:44,320
+chaque livre comporte une seule chose
+intelligente qui sert de pivot à toutes
+
+13
+00:00:44,320 --> 00:00:45,300
+les publications,
+
+14
+00:00:45,300 --> 00:00:46,580
+qu'elles soient numériques
+
+15
+00:00:46,580 --> 00:00:48,230
+ou papier.
+
+16
+00:00:48,230 --> 00:00:52,490
+Les modules de publication permettent de
+définir avec une grande précision le
+
+17
+00:00:52,490 --> 00:00:55,990
+formatage spécifiques à chaque
+diffuseur, et de s'adapter aux méthodes
+
+18
+00:00:55,990 --> 00:00:58,990
+de transmission technique de chaque
+partenaire.
+
+19
+00:01:00,370 --> 00:01:02,449
+Les fichiers propres à chaque ouvrage
+
+20
+00:01:02,449 --> 00:01:04,980
+sont envoyés dans les différents
+canaux de distribution,
+
+21
+00:01:04,980 --> 00:01:09,180
+avec la possibilité de personnaliser
+les livres pour un usage de publication
+
+22
+00:01:09,180 --> 00:01:10,840
+sur un site.
+
+23
+00:01:10,840 --> 00:01:15,390
+Il est même possible, sur ilivri.com, la librairie en ligne de Ligaran,
+
+24
+00:01:15,390 --> 00:01:18,940
+de commander des ouvrages papier avec
+une dédicace personnalisée.
+
+25
+00:01:20,820 --> 00:01:24,109
+Un des problèmes de la diffusion des
+informations sur les stores
+
+26
+00:01:24,109 --> 00:01:27,360
+est la vérification de l'intégrité de
+l'information,
+
+27
+00:01:27,360 --> 00:01:30,400
+en particulier la présence des
+couvertures.
+
+28
+00:01:30,400 --> 00:01:33,330
+Il est désormais très facile de
+surveiller l'état des publications
+
+29
+00:01:33,330 --> 00:01:36,460
+grâce aux outils de contrôle
+développés par Ligaran.
+
+30
+00:01:38,140 --> 00:01:41,550
+Ligaran dispose également d'outils
+permettant d'agréger les ventes des
+
+31
+00:01:41,550 --> 00:01:43,490
+différents circuits de distribution ;
+
+32
+00:01:43,490 --> 00:01:46,490
+pratique pour une gestion quotidienne.
+
+33
+00:01:47,120 --> 00:01:50,250
+Ligaran, c'est l'addition de
+compétences professionnelles sur
+
+34
+00:01:50,250 --> 00:01:51,800
+l'ensemble de la chaîne du livre,
+
+35
+00:01:51,800 --> 00:01:54,280
+appuyé par des outils industriels
+
+36
+00:01:54,280 --> 00:01:58,180
+permettant de produire simultanément
+des lots de plusieurs centaines ou miliers
+
+37
+00:01:58,180 --> 00:02:01,180
+d'ouvrages.
+
+38
+00:02:03,140 --> 00:02:05,680
+Ligaran, c'est surtout une équipe
+qui se connaît bien,
+
+39
+00:02:05,680 --> 00:02:08,480
+disponible pour tous vos projets
+éditoriaux.
+
+40
+00:02:08,480 --> 00:02:12,960
+Consultez-nous !
+
