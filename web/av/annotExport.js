@@ -106,8 +106,9 @@ function executeExportMain(metaContainerId, linesRoot, exportFormat, outputConta
         resultDoneInfo = document.createElement("h3");
         resultDoneInfo
             .appendChild(
-            document.createTextNode('L\'export a été copié dans le presse papier'));
-        /*todo: multilingue */
+            document.createTextNode(Translator.trans('The export is copied to the clipboard'
+                , {}
+                , null)));
         document
             .getElementById(outputContainerId)
             .appendChild(resultDoneInfo);

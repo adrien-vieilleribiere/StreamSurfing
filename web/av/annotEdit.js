@@ -98,8 +98,7 @@ function ttgSegmentEditTitle(segmentObject, segmentId, objectParams){
 function addDeleteLine(liNode, idToDelete, options){
     lineDeleteSpan=document.createElement("span");
     lineDeleteSpan.setAttribute('class','btn btn-danger lineAnnotDelete');
-    lineDeleteSpan.setAttribute('title','Remove the line');
-    /* todo: multilingue */
+    lineDeleteSpan.setAttribute('title',Translator.trans('Remove the line', {}, null));
     lineDeleteSpan.setAttribute('onclick',"javascript:removeAnnotLine('"+idToDelete+"')");
     lineDeleteIcon=document.createElement("span");
     lineDeleteIcon.setAttribute('class','glyphicon glyphicon-trash');
@@ -143,10 +142,7 @@ function addSetTimeBlock(typeMedia, pos, containerNode, idToSet, typeAnnot){
     // Add Button to set times
     setTimeSpan=document.createElement("span");
     setTimeSpan.id=idToSet+'_set_'+typeAnnot;
-	/* setTimeSpan.setAttribute('title','Ajouter un marqueur '
-	+ makeReadable_typeAnnot(typeAnnot,false)+'
-	(à la position courante de lecture)');
-	 todo: multilingue */
+    setTimeSpan.setAttribute('title',Translator.trans('Add a new segment at the curent reading position', {}, null));
     setTimeSpan.setAttribute('class', 'btn btn-primary btn-lg active set' + typeAnnot);
     //setTimeSpan.setAttribute('onclick',"javascript:makeAnnot('"+typeMedia+"',"+pos+",'"+idToSet+"','"+typeAnnot+"')");
     setTimeSpanContentIcon=document.createElement("span");
@@ -176,18 +172,39 @@ function addSetTimeBlock(typeMedia, pos, containerNode, idToSet, typeAnnot){
 }
 
 function ttgAddSetTimeBlock(segmentObject, containerNodeId, typeAnnot , objectParams){
-    /*console.log("ttgAddSetTimeBlock");
-    console.log(segmentObject);
-    console.log(containerNodeId);
-    console.log(typeAnnot);
-    console.log(objectParams);
+    /*
+        console.log("ttgAddSetTimeBlock");
+        console.log(segmentObject);
+        console.log(containerNodeId);
+        console.log(typeAnnot);
+        console.log(objectParams);
     */
     // Add Button to set times
 	var containerNode = document.getElementById(containerNodeId);
     setTimeSpan = document.createElement("span");
     setTimeSpan.id = containerNodeId + '_set_' + typeAnnot;
-	/* setTimeSpan.setAttribute('title','Ajouter un marqueur '+makeReadable_typeAnnot(typeAnnot,false)+' (à la position courante de lecture)');
-	 todo: multilingue */
+    switch (typeAnnot){
+        case 'start':
+            setTimeSpan.setAttribute(
+                "title",
+                Translator.trans('Change the start of the segment (with the current reading position)'
+                    , {}
+                    , null));
+            break;
+        case 'end':
+            setTimeSpan.setAttribute(
+                "title",
+                Translator.trans('Change the end of the segment (with the current reading position)'
+                    , {}
+                    , null));
+            break;
+        default:
+            setTimeSpan.setAttribute(
+                "title",
+                Translator.trans('Change the time value (with the current reading position)'
+                    , {}
+                    , null));
+    }
     setTimeSpan.setAttribute('class',
         'btn btn-primary btn-lg active set' + typeAnnot);
     setTimeSpan.setAttribute(
@@ -230,6 +247,28 @@ function ttgAddSetTimeBlock(segmentObject, containerNodeId, typeAnnot , objectPa
     // containerNode.appendChild(document.createTextNode(' '));
     setTimeInput = document.createElement("input");
     setTimeInput.id = containerNodeId+'_time_'+typeAnnot;
+    switch (typeAnnot){
+        case 'start':
+            setTimeInput.setAttribute(
+                "title",
+                Translator.trans('Value of the start of the segment'
+                    , {}
+                    , null));
+            break;
+        case 'end':
+            setTimeInput.setAttribute(
+                "title",
+                Translator.trans('Value of the end of the segment'
+                    , {}
+                    , null));
+            break;
+        default:
+            setTimeInput.setAttribute(
+                "title",
+                Translator.trans('Value of the segment)'
+                    , {}
+                    , null));
+    }
     setTimeInput.setAttribute('name',containerNodeId+'_time_'+typeAnnot);
     setTimeInput.setAttribute('type','text');
     setTimeInput.setAttribute('value', segmentObject['time_'+typeAnnot]);
@@ -251,14 +290,28 @@ function ttgAddReplayTimeBlock(segmentObject, containerNodeId, typeAnnot , objec
     var containerNode = document.getElementById(containerNodeId);
     replaySpan = document.createElement("span");
     replaySpan.id = containerNodeId + '_play_'+typeAnnot;
-    /* replaySpan.setAttribute('title','Revoir à partir du marqueur (de '+makeReadable_typeAnnot(typeAnnot,false)+")");
-	 todo: multilingue */
-    /*if(parseFloat(segmentObject['time_' + typeAnnot])>=0)
-    {
-     replaySpan.setAttribute('class','offsetCheck btn btn-primary');
+    switch (typeAnnot){
+        case 'start':
+            replaySpan.setAttribute(
+                "title",
+                Translator.trans('Replay from the start of the segment', {}, null));
+            break;
+        case 'end':
+            replaySpan.setAttribute(
+                "title",
+                Translator.trans('Replay from the end of the segment', {}, null));
+            break;
+        default:
+            replaySpan.setAttribute(
+                "title",
+                Translator.trans('Replay from the marker', {}, null));
     }
-    else{
-     replaySpan.setAttribute('class','offsetCheck btn btn-default');
+    /*
+    if (parseFloat(segmentObject['time_' + typeAnnot])>=0) {
+        replaySpan.setAttribute('class', 'offsetCheck btn btn-primary');
+    }
+    else {
+        replaySpan.setAttribute('class', 'offsetCheck btn btn-default');
     }*/
     replaySpan.setAttribute('class', 'offsetCheck btn btn-primary');
     switch (typeAnnot){

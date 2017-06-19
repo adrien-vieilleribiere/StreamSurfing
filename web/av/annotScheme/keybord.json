@@ -1,23 +1,5 @@
 [
   {
-    "deleteLine": "true"
-  },
-  {
-    "replayStart": "true"
-  },
-  {
-    "setStart": "true"
-  },
-  {
-    "setTitle": "true"
-  },
-  {
-    "replayEnd": "true"
-  },
-  {
-    "setEnd": "true"
-  },
-  {
     "keybordShortcuts": {
       "type": "simpleText",
       "name": "segmentShortcuts",

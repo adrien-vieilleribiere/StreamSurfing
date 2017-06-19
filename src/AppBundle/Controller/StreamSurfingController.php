@@ -110,8 +110,6 @@ class StreamSurfingController extends Controller
         $playerStrJs = 'ttgPlayer' . $randomInt;
         // $annotBoxHtml = 'an' . $idAnnot . ' ' . $randomInt;
         $annotBoxHtml = 'an' . $randomInt;
-        $annotScheme = $sSModel;
-        $annotSchemeRoute = $sSModel -> getRoute();
         $wave = $em
             -> getRepository('AppBundle\Entity\Wave')
             -> findOneBy(['id' => $sSObject -> getStreamSurfWaveId() ]);
@@ -120,6 +118,10 @@ class StreamSurfingController extends Controller
             -> getRepository('AppBundle\Entity\Annotation')
             -> findOneBy(['id' => $wave -> getAnnotationId() ]);
         dump($annot);
+        $annotScheme = $em -> getRepository('AppBundle\Entity\TtgAnnotationScheme')
+            -> findOneBy(['id' => $annot -> getScheme() ]);
+        dump($annotScheme);
+        $annotSchemeRoute = $annotScheme -> getRoute();
         $annotPlayer = $em
             -> getRepository('AppBundle\Entity\AnnotationPlayer')
             -> findOneBy(['id' => $wave -> getAnnotationPlayerId() ]);

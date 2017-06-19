@@ -30,12 +30,15 @@ function ttgCreateNewSegment(listContainerId, playerHtmlId, annotSchemeRoute, ob
     // test existence of annotContainerToInsertId, (add node if not ?)
     newli = document.getElementById(annotContainerToInsertId).appendChild(newli);
     var annotSchemeUrl = '/av/annotScheme/basic.json';
+    var annotSchemeUrl = '/av/annotScheme/dim1.json';
+    var annotSchemeUrl = '/av/annotScheme/dev.json';
     if (annotSchemeRoute.length) {
-        console.log("AnnotSchemeUrl found" + annotSchemeRoute);
-       annotSchemeUrl = annotSchemeRoute;
+        console.log("AnnotSchemeUrl found " + annotSchemeRoute);
+        console.log("ignoring it....");
+        annotSchemeUrl = annotSchemeRoute;
     }
     else{
-        console.log("No annotSchemeUrl found");
+        console.log("No annotSchemeUrl found" + annotSchemeUrl);
     }
     //  var annotSchemeObj = JSON.parse('[{"deleteLine": "true"},{"replayStart":"true"},{"setStart":"true"},{"setTitle":"true"},{"replayEnd":"true"},{"setEnd":"true"},{"setValDim1":{"type":"numeric","min":"-1","max":"1","default":"0","name":"likeValue"}}]');
     //$.get(annotSchemeUrl, function (data) {
@@ -144,8 +147,28 @@ function ttgCreateSetTimeBlock(segmentObject, containerNodeId, typeAnnot , playe
     var containerNode = document.getElementById(containerNodeId);
     setTimeSpan=document.createElement("span");
     setTimeSpan.id = containerNodeId + '_set_' + typeAnnot;
-    /* setTimeSpan.setAttribute('title','Ajouter un marqueur '+makeReadable_typeAnnot(typeAnnot,false)+' (à la position courante de lecture)');
-     todo: multilingue */
+    switch (typeAnnot){
+        case 'start':
+            setTimeSpan.setAttribute(
+                "title",
+                Translator.trans('Change the start of the segment (with the current reading position)'
+                    , {}
+                    , null));
+            break;
+        case 'end':
+            setTimeSpan.setAttribute(
+                "title",
+                Translator.trans('Change the end of the segment (with the current reading position)'
+                    , {}
+                    , null));
+            break;
+        default:
+            setTimeSpan.setAttribute(
+                "title",
+                Translator.trans('Change the time value (with the current reading position)'
+                    , {}
+                    , null));
+    }
     setTimeSpan.setAttribute('class','btn btn-primary btn-lg active set'+typeAnnot);
     setTimeSpan.setAttribute(
         'onclick',
@@ -187,6 +210,28 @@ function ttgCreateSetTimeBlock(segmentObject, containerNodeId, typeAnnot , playe
     // containerNode.appendChild(document.createTextNode(' '));
     setTimeInput = document.createElement("input");
     setTimeInput.id = containerNodeId + '_time_' + typeAnnot;
+    switch (typeAnnot){
+        case 'start':
+            setTimeInput.setAttribute(
+                "title",
+                Translator.trans('Value of the start of the segment'
+                    , {}
+                    , null));
+            break;
+        case 'end':
+            setTimeInput.setAttribute(
+                "title",
+                Translator.trans('Value of the end of the segment'
+                    , {}
+                    , null));
+            break;
+        default:
+            setTimeInput.setAttribute(
+                "title",
+                Translator.trans('Value of the segment)'
+                    , {}
+                    , null));
+    }
     setTimeInput.setAttribute('name', containerNodeId + '_time_' + typeAnnot);
     setTimeInput.setAttribute('type','text');
     setTimeInput.setAttribute('value', segmentObject['time_' + typeAnnot]);
@@ -302,7 +347,10 @@ function ttgCreateNewShortcutControler(containerNodeId, shortcutsObject, objectP
     setScInput.setAttribute('data-liid', containerNodeId);
     setScInput.setAttribute('type', 'text');
     setScInput.setAttribute('class', 'shortcutLineControls');
-    setScInput.setAttribute('placeholder', 'Shortcut-Zone');/* todo: multilingue */
+    setScInput.setAttribute('placeholder',
+        Translator.trans('Shortcut-Zone'
+            , {}
+            , null));
     if (shortcutsObject['style']) {
         setScInput.setAttribute(
             'style',
@@ -316,14 +364,17 @@ function ttgCreateNewShortcutControler(containerNodeId, shortcutsObject, objectP
     if (shortcutsObject['title']) {
         setScInput.setAttribute(
             'title',
-            shortcutsObject['title']);
+            Translator.trans(shortcutsObject['title']
+                , {}
+                , null));
     }
     else{
         setScInput.setAttribute(
             'title',
-            shortcutsObject['name']);
+            Translator.trans('Shortcut-Zone'
+                , {}
+                , null));
     }
-    // setScInput = containerNode.appendChild(setScInput);
     setScInput = containerNode.appendChild(setScInput);
     var shortcutToProcess;
     var shortcutAction = Array();
