@@ -1,0 +1,11 @@
+{% block body %}
+
+        {{ include('streamSurf/mediaPlayers/mediaPlayerMin.html.twig', {'media': media}) }}
+
+    {{ include('tc/fixedJumps/fixedJumpsParams.twig',
+    {'media': media,
+        'modalId':"modal_fixedJumps#{ playerHtmlId }"}) }}
+    {{ include('tc/fixedJumps/fixedJumps.twig',
+    {'media': media}) }}
+
+{% endblock %}

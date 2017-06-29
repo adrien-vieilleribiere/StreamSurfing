@@ -46,7 +46,7 @@ class TtgPlayerConfigController extends Controller
             return new Response("PlayerConf created.<pre><code>".print_r($playerConf,true).'</code></pre>');
         }
 
-        return $this->render('ttgPlayerConfig/new.html.twig', [
+        return $this->render('ttgPlayerConfig/newModel.html.twig', [
             'TtgPlayerConfigForm' => $form->createView()
         ]);
     }

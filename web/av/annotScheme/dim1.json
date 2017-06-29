@@ -25,14 +25,5 @@
       "default" : "0",
       "name": "likeValue"
     }
-  },
-  {
-    "setValDim2": {
-      "type": "numeric",
-      "min": "0",
-      "max": "1",
-      "default" : "0",
-      "name": "importance"
-    }
   }
 ]

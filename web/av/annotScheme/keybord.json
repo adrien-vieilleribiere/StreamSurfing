@@ -1,0 +1,146 @@
+[
+  {
+    "keybordShortcuts": {
+      "type": "simpleText",
+      "name": "segmentShortcuts",
+      /*"title": "Shotcut Zone",*/
+      "style": "max-width:4em;width:4em;margin:0.5em;",
+      "shortcuts": [
+        { "key": "space",
+          "keyCode" : 32,
+          "action": "togglePlayPause"
+        },
+        { "key": "+",
+          "keyCode" : 107,
+          "action": "createNewSegment",
+          "actionParams": ["/av/annotScheme/dev.json", {"focus": ".shortcutLineControls"}]
+        },
+        { "key": "-",
+          "keyCode" : 109,
+          "action": "createNewSegment",
+          "actionParams": ["/av/annotScheme/dev.json", {"focus": "none"}]
+        },
+        { "key": "del",
+          "keyCode" : 46,
+          "action": "deleteSegment"
+        },
+        { "key": "left-arrow",
+          "keyCode" : 37,
+          "action": "reviewSegmentStart"
+        },
+        { "key": "right-arrow",
+          "keyCode" : 39,
+          "action": "reviewSegmentEnd"
+        },
+        { "key": "enter",
+          "keyCode" : 13,
+          "action": "editTitle"
+        },
+        { "key": "backspace",
+          "keyCode" : 8,
+          "action": "scrollToPlayhead"
+        },
+        { "key": "down-arrow",
+          "keyCode" : 40,
+          "action": "goToNextLine"
+        },
+        { "key": "up-arrow",
+          "keyCode" : 38,
+          "action": "goToPreviousLine"
+        },
+        { "key": "page-up",
+          "keyCode" : 33,
+          "action": "setSegmentEnd"
+        },
+        { "key": "page-down",
+          "keyCode" : 34,
+          "action": "setSegmentStart"
+        },
+        { "key": "top-left-arrow",
+          "keyCode" : 36,
+          "action": "scrollToPlayhead"
+        },
+        { "key": "a",
+          "keyCode" : 65,
+          "action": "backward",
+          "actionParams":[1]
+        },
+        { "key": "z",
+          "keyCode" : 90,
+          "action": "backward",
+          "actionParams":[3]
+        },
+        { "key": "e",
+          "keyCode" : 69,
+          "action": "backward",
+          "actionParams":[10]
+        },
+        { "key": "q",
+          "keyCode" : 81,
+          "action": "forward",
+          "actionParams":[1]
+        },
+        { "key": "s",
+          "keyCode" : 83,
+          "action": "forward",
+          "actionParams":[5]
+        },
+        { "key": "d",
+          "keyCode" : 68,
+          "action": "forward",
+          "actionParams":[30]
+        },
+        { "key": "0",
+          "keyCode" : 96,
+          "action": "playbackrate",
+          "actionParams":[1]
+        },
+        { "key": "1",
+          "keyCode" : 97,
+          "action": "playbackrate",
+          "actionParams":[0.75]
+        },
+        { "key": "2",
+          "keyCode" : 98,
+          "action": "playbackrate",
+          "actionParams":[0.66]
+        },
+        { "key": "3",
+          "keyCode" : 99,
+          "action": "playbackrate",
+          "actionParams":[0.5]
+        },
+        { "key": "4",
+          "keyCode" : 100,
+          "action": "playbackrate",
+          "actionParams":[1]
+        },
+        { "key": "5",
+          "keyCode" : 101,
+          "action": "playbackrate",
+          "actionParams":[1.1]
+        },
+        { "key": "6",
+          "keyCode" : 102,
+          "action": "playbackrate",
+          "actionParams":[1.25]
+        },
+        { "key": "7",
+          "keyCode" : 103,
+          "action": "playbackrate",
+          "actionParams":[1.5]
+        },
+        { "key": "8",
+          "keyCode" : 104,
+          "action": "playbackrate",
+          "actionParams":[2]
+        },
+        { "key": "9",
+          "keyCode" : 105,
+          "action": "playbackrate",
+          "actionParams":[4]
+        }
+      ]
+    }
+  }
+]

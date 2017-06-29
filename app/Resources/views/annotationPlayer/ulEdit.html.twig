@@ -1,0 +1,172 @@
+{% extends 'annotBox.html.twig' %}
+{% block outBefore %}
+  {{ include('annotation/ulEdit/ulBlockParams.html.twig',
+    {  'media': media,
+        'modalId': 'progressUlModal',
+        'rootId':'progressUl'}) }}
+{% endblock %}
+{% block annotBody %}
+  <div id="ttgAnUl{{ playerHtmlId }}" class="tab-pane">
+      <table class="table table-responsive table-condensed center"
+             style="border:none"
+      >
+          <tbody>
+          <tr>
+              <td style="border-top: none">
+                  {{ include('annotation/ulEdit/li_new.html.twig',
+                  {  'media': media,
+                      'modalId': 'progressUlModal',
+                      'rootId':'progressUl'}) }}
+              </td>
+              <td style="border-top: none">
+                  {{ include('annotation/ulEdit/ulBlock_refresh.html.twig',
+                  {  'media': media,
+                      'modalId': 'progressUlModal',
+                      'rootId':'progressUl'}) }}
+              </td>
+              <td style="border-top: none">
+                  {{ include('annotation/ulEdit/ulBlock_recenter.html.twig',
+                  {  'media': media,
+                      'modalId': 'progressUlModal',
+                      'rootId':'progressUl'}) }}
+              </td>
+              <td style="border-top: none; min-width: 25%">
+                  <span id="ttgAnUlNav{{ playerHtmlId }}" class="center localNavBlock"></span>
+              </td>
+              <td style="border-top: none">
+                  {{ include('annotation/ulEdit/ulBlockParams_open.html.twig',
+                  {  'media': media,
+                      'modalId': 'progressUlModal',
+                      'rootId':'progressUl'}) }}
+              </td>
+          </tr>
+          </tbody>
+      </table>
+      {{ include('tc/playbackRate/playbackRateRadioBlockParams.html.twig',
+      {   'media': media,
+          'modalId':"modal_pRBR#{ playerHtmlId }"}) }}
+      <form id="ttgAnUlBody{{ playerHtmlId }}" style="width: 100%; margin:0em auto"></form>
+
+      {{ include('tc/playbackRate/playbackRateRadioBlock.html.twig',
+      {'media': media}) }}
+
+      {{ include('tc/fixedJumps/fixedJumpsParams.twig',
+      {'media': media,
+          'modalId':"modal_fixedJumps#{ playerHtmlId }"}) }}
+      {{ include('tc/fixedJumps/fixedJumps.twig',
+      {'media': media}) }}
+
+      <div class="chartsContainer">
+          {{ include('tc/progressBar/navProgressBar.html.twig', {
+              'media':media,
+              'rootId':'progressBarRange'
+          }) }}
+
+
+
+          {{ include('tc/progressBar/navProgressBarParams.html.twig',
+          {  'media': media,
+              'modalId': 'progressBarRangeModal',
+              'rootId':'progressBarRange'}) }}
+
+          <table class="table table-responsive table-condensed center"
+                 style="border:none"
+          >
+              <tbody>
+              <tr>
+                  <td style="border-top: none">
+                      {{ include('tc/progressBar/navProgressBarParams_updateProgress.html.twig',
+                      {  'media': media,
+                          'modalId': 'progressBarRangeModal',
+                          'rootId':'progressBarRange'}) }}
+                  </td>
+                  <td style="border-top: none">
+                      {{ include('tc/progressBar/navProgressBarParams_recenterPlayhead.html.twig',
+                      {  'media': media,
+                          'modalId': 'progressBarRangeModal',
+                          'rootId':'progressBarRange'}) }}
+                  </td>
+                  <td style="border-top: none">
+                      {{ include('tc/progressBar/navProgressBarParams_open.html.twig',
+                      {  'media': media,
+                          'modalId': 'progressBarRangeModal',
+                          'rootId':'progressBarRange'}) }}
+                  </td>
+              </tr>
+              </tbody>
+          </table>
+      </div>
+
+
+  </div>
+
+    <br/>
+
+    {{ include('annotation/ulEdit/ulBlock_meta.html.twig',
+    {  'media': media,
+        'modalId': 'metaModal{{ playerHtmlId }}',
+        'rootId':'progressUl'}) }}
+    <br/>
+    <div style="width: 100%; margin:0em auto; text-align: center" class="container-fluid">
+
+      {{ include('annotation/ulEdit/ulBlock_export_open.html.twig',
+      {  'media': media,
+          'modalId': 'exportModal',
+          'rootId':'progressUl'}) }}
+    </div>
+      {{ include('annotation/ulEdit/ulBlock_export.html.twig',
+      {  'media': media,
+          'modalId': 'exportModal',
+          'rootId':'progressUl'}) }}
+
+
+    <script type="application/javascript">
+        $( function() {
+            getAsJsArrayOfArray(
+                /*[
+                    {'annotType':'srtFile',
+                        'annotUrl':'/time.adrien-v.com/examples/medias/annot/FLqft-ICVQo__fr__HumanExtendedVersionE1_interviews_themes.srt',
+                        'annotTitle':'Interviews - thèmes',
+                        'itemStart':0}
+                        ]
+                ,
+                 [
+                 {'annotType':'json_avTV',
+                 'annotUrl':'/time.adrien-v.com/examples/medias/annot/tmp/test.json',
+                 'annotTitle':'Interviews - thèmes',
+                 'itemStart':0}
+                 ],
+                  [
+                     {'annotType':'srtFile',
+                     'annotUrl':'/time.adrien-v.com/examples/medias/annot/tmp/test.srt',
+                     'annotTitle':'Interviews - thèmes',
+                     'itemStart':0}
+                     ],
+                 [
+                 {'annotType':'json_avTV',
+                 'annotUrl':'/time.adrien-v.com/examples/medias/annot/tmp/test2.json',
+                 'annotTitle':'Interviews - thèmes',
+                 'itemStart':0}
+                 ],
+                 */
+                [
+                    {'annotType':'{{ annotType }}',
+                        'annotUrl':'{{ annotUrl }}',
+                        'annotTitle':'{{ annotName }}',
+                        'itemStart':0}
+                ],
+                ttgAnnotationUlEdit,
+                {
+                    'chartContainerId':'ttgAnUlBody{{ playerHtmlId }}',
+                    'sizeCriterionId':'item_start',
+                    'offsetCriterionId':'time_start',
+                    'localNavType':'singleFtxt',
+                    'localNavBlockId':'ttgAnUlNav{{ playerHtmlId }}',
+                    'chartOptions':{},
+                    'gadgetContainerId':'toolbar_themes',
+                    'playerHtmlId':'{{ playerHtmlId }}'});
+            }
+        );
+    </script>
+
+{% endblock %}

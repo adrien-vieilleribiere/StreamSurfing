@@ -26,7 +26,7 @@
                 events: {
                     'onReady': onPlayerReady,
                     'onStateChange': onPlayerStateChange
-                    } });
+                } });
         }
         function onPlayerReady(event) {
             // player.cuePlaylist(new Array('{{ media.searchIdPlatform() }}'), 0, 0, 'medium');
@@ -45,9 +45,9 @@
         function goToTime(seconds){
             player.seekTo(seconds,true);
         }
-        
+
         function getCurrentTime() {
-                return player.getCurrentTime();
+            return player.getCurrentTime();
         }
 
         function getDuration(){
@@ -55,7 +55,7 @@
         }
 
 
-        
+
     </script>
 {% endblock %}
 {% block stylesheets %}

@@ -21,7 +21,7 @@
     "keybordShortcuts": {
       "type": "simpleText",
       "name": "segmentShortcuts",
-      "title": "Shotcut Zone",
+      /*"title": "Shotcut Zone",*/
       "style": "max-width:4em;width:4em;margin:0.5em;",
       "shortcuts": [
         { "key": "space",

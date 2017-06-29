@@ -4,7 +4,7 @@
     <div class="container-fluid" id="{{ playerHtmlId }}">
         <audio controls="controls" id="{{ playerJsId }}">
             <source src="{{ media.searchUrlWithoutExt }}.mp3" type="audio/mpeg"/>
-              <source src="{{ media.searchUrlWithoutExt }}.ogg" type="audio/ogg"/>
+            <source src="{{ media.searchUrlWithoutExt }}.ogg" type="audio/ogg"/>
             {{ "Your browser does not support the audio tag." | trans }}
         </audio>
     </div>
@@ -16,10 +16,10 @@
             .getElementById('{{ playerHtmlId }}')
             .ttgGetCurrentTime
             = function () {
-                return document
-                    .getElementById('{{ playerJsId }}')
-                    .currentTime;
-            }
+            return document
+                .getElementById('{{ playerJsId }}')
+                .currentTime;
+        }
         document
             .getElementById('{{ playerHtmlId }}')
             .ttgGetDuration
@@ -27,18 +27,18 @@
             return document
                 .getElementById('{{ playerJsId }}')
                 .duration;
-            }
+        }
         document
             .getElementById('{{ playerHtmlId }}')
             .ttgSeekTo
             = function (seconds) {
-                if (seconds >= 0) {
-                    document
-                        .getElementById('{{ playerJsId }}')
-                        .currentTime
-                       = seconds;
-                }
+            if (seconds >= 0) {
+                document
+                    .getElementById('{{ playerJsId }}')
+                    .currentTime
+                    = seconds;
             }
+        }
         document
             .getElementById('{{ playerHtmlId }}')
             .ttgForward
@@ -57,11 +57,11 @@
             .getElementById('{{ playerHtmlId }}')
             .ttgSetPlaybackRate
             = function (playbackRate) {
-                document
-                    .getElementById('{{ playerJsId }}')
-                    .playbackRate
-                    = playbackRate;
-            }
+            document
+                .getElementById('{{ playerJsId }}')
+                .playbackRate
+                = playbackRate;
+        }
         document
             .getElementById('{{ playerHtmlId }}')
             .ttgTogglePlayPause
@@ -77,7 +77,7 @@
             .getElementById('{{ playerHtmlId }}')
             .ttgGetPlaylistIndex
             = function () {
-           return 0;
+            return 0;
         }
         document
             .getElementById('{{ playerHtmlId }}')
@@ -85,12 +85,12 @@
             = function (newPositionInPlaylist) {
             console.log("a implémenter");
         };
-       /* function goToTime(type,seconds){ */
+        /* function goToTime(type,seconds){ */
         function goToTime(seconds){
             document
                 . getElementById('a{{ globalMediaPositionFrom0 }}')
-                    .currentTime
-                        = seconds ;
+                .currentTime
+                = seconds ;
         }
         function getCurrentTime() {
             return document
