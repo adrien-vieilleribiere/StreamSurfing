@@ -23,9 +23,9 @@ and set up your own database/mailer parameters.
 ```bash
 php bin/console doctrine:schema:update --force
 ```
-- Execute on of the provided sql dumps in [app/init](app/init)
+- Execute on of the provided sql dumps in [app/Resources/init](https://github.com/adrien-vieilleribiere/StreamSurfing/tree/master/app/Resources/init)
     
-For details of what is added, see [MANUAL_INSTALL.md](MANUAL_INSTALL.md)
+For details of what is added, see [MANUAL_INSTALL.md](https://github.com/adrien-vieilleribiere/StreamSurfing/tree/master/MANUAL_INSTALL.md)
 
 
 
