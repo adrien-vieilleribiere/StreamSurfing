@@ -39,7 +39,7 @@ INSERT INTO `media` (`id`, `name`, `media_type`, `url`, `metadata`, `duration`) 
 (1, 'Beenie Man, Lt Stitchie and Josey Wales at King Jammy\'s studio', 21000, 'https://www.youtube.com/watch?v=MCzd8LgUgeQ', '{"name":"Beenie Man, Lt Stitchie and Josey Wales at King Jammy\'s studio","idPlatform":"MCzd8LgUgeQ"}', 1665);
  ```
 
-####Add Annotation
+###Add Annotation
 - from the new Annotation form at `app.php/annotation/new`
 - or from a SQL dump:
  ```sql
@@ -47,7 +47,7 @@ INSERT INTO `annotation` (`id`, `name`, `annotation_type`, `media`, `url`, `sche
 (1, 'Beenie Man, Lt Stitchie and Josey Wales - Singers', 'csv_av', 34, '/av/annot/MCzd8LgUgeQ_KingJammys.csv', '3');
  ```
 
-####Add Wave
+###Add Wave
 Create a new Wave by associating an Annotation with an Annotation Player: 
 - from the new Annotation form at `app.php/w/new`
 - or from a SQL dump:
