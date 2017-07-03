@@ -13,7 +13,7 @@ INSERT INTO `streamsurfmodel` (`id`, `name`, `route`, `param`) VALUES
 
 ## Setup media player(s)
 A Media player descibes how to render a media file. 
-it can be initialized with elements provided in [the mediaPlayer folder](https://github.com/adrien-vieilleribiere/StreamSurfing/tree/master/streamSurf/mediaPlayers/), for instance by a SQL dump:
+it can be initialized with elements provided in [the mediaPlayer folder](https://github.com/adrien-vieilleribiere/StreamSurfing/tree/master/app/Resources/views/mediaPlayer/models), for instance by a SQL dump:
  ```sql
 INSERT INTO `mediaplayer` (`id`, `name`, `route`, `param`) VALUES
 (1, 'Player Generic Minimal', 'streamSurf/mediaPlayers/mediaPlayerMin.html.twig', NULL),
@@ -22,7 +22,7 @@ INSERT INTO `mediaplayer` (`id`, `name`, `route`, `param`) VALUES
 
 ## Setup Annotation player(s)
 An Annotation Player descibes how to render an annotation. 
-it can be initialized with elements provided in [the annotationPlayer folder](https://github.com/adrien-vieilleribiere/StreamSurfing/tree/master/annotationPlayer/), for instance by a SQL dump:
+it can be initialized with elements provided in [the annotationPlayer folder](https://github.com/adrien-vieilleribiere/StreamSurfing/tree/master/app/Resources/views/annotationPlayer), for instance by a SQL dump:
  ```sql
 INSERT INTO `annotationplayer` (`id`, `name`, `route`, `param`) VALUES
 (1, 'annotation ul basic', 'annotationPlayer/ulBasic.html.twig', NULL),
