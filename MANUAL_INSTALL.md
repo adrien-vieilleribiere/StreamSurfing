@@ -3,7 +3,7 @@
 ## Setup global model(s)
 A StreamSurf Model describes the global positions of its components 
 (mainly its MediaPlayer and its WavePlayer).
-- It can be initialized by [the template provided](https://github.com/adrien-vieilleribiere/StreamSurfing/tree/master/streamSurf/models/sS_playerTop_annotBottom.html.twig) 
+- It can be initialized with [the provided template](https://github.com/adrien-vieilleribiere/StreamSurfing/tree/master/app/Resources/views/streamSurf/models) 
 by a SQL dump:
  ```sql
 INSERT INTO `streamsurfmodel` (`id`, `name`, `route`, `param`) VALUES
