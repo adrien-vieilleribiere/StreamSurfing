@@ -1,6 +1,6 @@
 ﻿1
 00:00:01,343 --> 00:00:05,554
-les podcatsts, un art nouveau, un art original.
+les podcatsts 42, un art nouveau, un art original.
 
 2
 00:00:05,579 --> 00:00:07,062
@@ -36,8 +36,8 @@ et qui entre dans l'intimité d'un auditeur
 
 10
 00:00:18,168 --> 00:00:24,825
-Bonjour à tous et bienvenue pour la première revue de presse 
-de "Moustic, the Audio Agency" dédiée à l'Audio évidemment.
+Bonjour à tous et bienvenue pour la première revue de presse
+de ''Moustic, the Audio Agency'' dédiée à l'Audio évidemment.
 
 11
 00:00:24,825 --> 00:00:26,348
@@ -45,12 +45,12 @@ Le concept est très simple :
 
 12
 00:00:26,277 --> 00:00:33,100
-Une fois par moi, on vous propose de revenir sur les actualités et les nouveautés 
+Une fois par moi, on vous propose de revenir sur les actualités et les nouveautés
 du secteur de l'audio digital en quelques minutes;
 
 13
 00:00:32,996 --> 00:00:36,285
-Les reportages à ne pas manquer, 
+Les reportages à ne pas manquer,
 ou les infos que vous avez ratées.
 
 14
@@ -69,27 +69,27 @@ Que ce passe-t-il d'abord du côté de nos confrères américains ?
 
 17
 00:00:48,530 --> 00:00:51,285
-Et bien deux faits marquants à noter 
+Et bien deux faits marquants à noter
 pour cette première édition.
 
 18
 00:00:51,480 --> 00:00:55,120
 D'abord le new york times vient de
-passer au podcast avec "The Daily".
+passer au podcast avec ''The Daily''.
 
 19
 00:00:55,120 --> 00:01:00,294
-On est déjà tous accros au format que le quotidien offre à ses abonnés 
+On est déjà tous accros au format que le quotidien offre à ses abonnés
 tous les matins à 6 heures.
 
 20
 00:01:00,210 --> 00:01:05,465
-Chaque édition fait entre 15 et 20 minutes 
+Chaque édition fait entre 15 et 20 minutes
 et aborde 2 à 4 sujets qui ont marqué l'actualité.
 
 21
 00:01:05,497 --> 00:01:09,703
-Un format riche donc, mais très digeste 
+Un format riche donc, mais très digeste
 et qui offre un traitement différent.
 
 22
@@ -98,12 +98,12 @@ On est fan !
 
 23
 00:01:10,490 --> 00:01:11,381
-"Serial"
+''Serial''
 
 24
 00:01:11,381 --> 00:01:17,990
-Vous n'avez pas pu passer à côté, 
-les créateurs de la série audio américaine "Serial" 
+Vous n'avez pas pu passer à côté,
+les créateurs de la série audio américaine ''Serial''
 sont sur le  point de faire leur grand retour
 
 25
@@ -122,7 +122,7 @@ d'avoir échappé à un meurtre.
 
 28
 00:01:28,779 --> 00:01:32,559
-Tous les épisodes sortiront connu en seule fois, 
+Tous les épisodes sortiront connu en seule fois,
 et on les attend avec impatience.
 
 29
@@ -147,13 +147,13 @@ Et on démarre avec un petit clin d'oeil :
 
 34
 00:01:46,642 --> 00:01:49,840
-Le reportage du tube sur canal+ qui proposait, il ya quelques semaines, 
+Le reportage du tube sur canal+ qui proposait, il ya quelques semaines,
 un sujet sur les podacsts et leur succès aux Etats-Unis
 
 35
 00:01:53,200 --> 00:01:57,684
 Du succès justement :
-de Marc Maron avec WTF (entendez "What the F**k"),
+de Marc Maron avec WTF (entendez ''What the F**k''),
 
 36
 00:01:57,684 --> 00:02:01,088
@@ -165,7 +165,7 @@ le tube offrait un sujet d'introduction aux podcasts assez complet.
 
 38
 00:02:04,173 --> 00:02:08,282
-Et si vous avez loupé l'émission, 
+Et si vous avez loupé l'émission,
 elle est encore disponible sur le site de canal+
 
 39
@@ -174,18 +174,18 @@ Chiffres maintenant.
 
 40
 00:02:10,197 --> 00:02:11,197
-Deux grandes nouvelles encore 
+Deux grandes nouvelles encore
 pour les producteurs et pour les annonceurs :
 
 41
 00:02:13,779 --> 00:02:22,232
 Lu sur offremedia en début de semaine dernière :
-Médiamétrie annonce une augmentation de 19 % d'audience 
+Médiamétrie annonce une augmentation de 19 % d'audience
 pour l'audio digitales, par rapport à 2015.
 
 42
 00:02:22,300 --> 00:02:26,813
-Deuxième grande nouvelle : 
+Deuxième grande nouvelle :
 elle concerne cette fois le volume publicitaire de l'audio digital,
 
 43
@@ -198,22 +198,22 @@ Le nombre d'annonceurs étant passé de 124 à 168 sur 2016.
 
 45
 00:02:36,424 --> 00:02:42,274
-Les  podcats peuvent facilement rapporter à leurs créateurs 
+Les  podcats peuvent facilement rapporter à leurs créateurs
 des millions de dollars par an.
 
 46
 00:02:42,299 --> 00:02:52,072
-En juillet 2016, 
-le groupe Radio France lancait un appel d'offres pour la monétisation 
+En juillet 2016,
+le groupe Radio France lancait un appel d'offres pour la monétisation
 de l'ensemble des espaces publicitaires de ses podcasts et de ses contenus audio à la demande.
 
 47
 00:02:52,192 --> 00:02:55,667
-Mathieu Gallet s'est prononcé et il a choisi "TargetSpot",
+Mathieu Gallet s'est prononcé et il a choisi ''TargetSpot'',
 
 48
 00:02:55,692 --> 00:02:59,527
-une filiale de "Radionomy Group",
+une filiale de ''Radionomy Group'',
 pour assurer le succès de cette monétisation.
 
 49
@@ -222,7 +222,7 @@ TargetSpot, qui n'est autre que la plus grande régie audio digitale aux Etats-U
 
 50
 00:03:04,019 --> 00:03:08,135
-assoi donc encore un peu plus 
+assoi donc encore un peu plus
 sa position stratégique en Europe et en France
 
 51
@@ -237,14 +237,14 @@ Levées de fonds
 
 53
 00:03:12,889 --> 00:03:18,765
-Ca bouge sur l'hexagone puisque 
-deux acteurs du marché du podcast 
+Ca bouge sur l'hexagone puisque
+deux acteurs du marché du podcast
 viennent de boucler deux très belles levées de fonds.
 
 54
 00:03:18,867 --> 00:03:23,968
-on salue donc l'équipe de bing audio 
-et leurs cagnottes kiss kiss bang bang 
+on salue donc l'équipe de bing audio
+et leurs cagnottes kiss kiss bang bang
 de plus de 23000 euros
 
 55
@@ -258,12 +258,12 @@ et on a hâte d'assister à la naissance de leur nouveau format.
 
 57
 00:03:31,382 --> 00:03:35,327
-Génération XX, 
+Génération XX,
 c'est le titre d'un nouveau podcast consacré aux femmes.
 
 58
 00:03:35,327 --> 00:03:40,905
-Celui-ci part à la rencontre des femmes entrepreneures, 
+Celui-ci part à la rencontre des femmes entrepreneures,
 rêveuses, inspirées et inspirantes (je cite).
 
 59
@@ -273,8 +273,8 @@ puisqu'il n'y aura jamais assez de podcast consacrés aux femmes.
 
 60
 00:03:47,379 --> 00:03:51,230
-Toujours concret et féminin, 
-l'émission "D'égales à Ego",
+Toujours concret et féminin,
+l'émission ''D'égales à Ego'',
 dédié à l'accompagnement des femmes dans leur carrière,
 
 61
@@ -289,12 +289,12 @@ un format signé Moustic.
 63
 00:04:02,569 --> 00:04:08,319
 Et on termine par une grande nouvelle:
-après le transfert de slate place au "c'est mon histoire" du "Elle".
+après le transfert de slate place au ''c'est mon histoire'' du ''Elle''.
 
 64
 00:04:08,327 --> 00:04:13,389
-C'est officiel, l'hebdomadaire lance sa version Audio 
-de sa rubrique star "C'est mon Histoire",
+C'est officiel, l'hebdomadaire lance sa version Audio
+de sa rubrique star ''C'est mon Histoire'',
 
 65
 00:04:13,389 --> 00:04:20,994
