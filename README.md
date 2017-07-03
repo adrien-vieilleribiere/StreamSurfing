@@ -58,7 +58,7 @@ INSERT INTO `wave` (`id`, `name`, `annotation_player_id`, `annotation_id`, `para
 
 ## 3 - Create StreamSurfing
 Create a new StreamSurfing by associating a Media, a Media Player and a Wave: 
-- from the new Annotation form at `app_dev.php/sS/new"`
+- from the new Annotation form at `app.php/sS/new"`
 - or from a SQL dump:
  ```sql
 INSERT INTO `streamsurfing` (`id`, `name`, `stream_surf_model_id`, `param`, `stream_surf_media_player_id`, `stream_surf_media_id`, `stream_surf_wave_id`) VALUES
@@ -66,7 +66,7 @@ INSERT INTO `streamsurfing` (`id`, `name`, `stream_surf_model_id`, `param`, `str
 ```
 
 ## 4 - StreamSurf
-Display the StreamSurfing from the route `app_dev.php/sS/{idOfTheStreamSurfing}`, 
+Display the StreamSurfing from the route `app.php/sS/{idOfTheStreamSurfing}`, 
 e.g. `app.php/sS/1` for the running example.
 
 
