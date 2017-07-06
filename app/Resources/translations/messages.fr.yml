@@ -1,4 +1,5 @@
 # app/Resources/translations/messages.en.yml
+"Your browser does not support the video tag.": "Votre navigateur ne supporte pas la balise video."
 "New Media": "Ajouter un nouveau Média"
 "Name": "Nom"
 "Url": "Url"
@@ -83,6 +84,10 @@
 "See Available Waves": "Voir les vagues disponibles"
 "Wave created": "Une vague a été créee"
 "Play the created StreamSurfing": "Lire le StreamSurfing crée"
+"Stream surf model id": "Modèle"
+"Stream surf media id": "Média"
+"Stream surf media player id": "Lecteur de Média"
+"Stream surf wave id": "Wave"
 "Remove the line": "Effacer la ligne"
 "Add a new segment at the curent reading position": "Ajouter un nouveau Segment (à la position courante de lecture)"
 "Replay from the marker": "Relire depuis ce marqueur"

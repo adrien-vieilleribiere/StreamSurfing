@@ -1,4 +1,5 @@
 # app/Resources/translations/messages.en.yml
+"Your browser does not support the video tag.": "Your browser does not support the video tag."
 "New Media": "Add a new Media"
 "Name": "Name"
 "Url": "Url"
@@ -86,6 +87,10 @@
 "See Available StreamSurfings": "See Available StreamSurfings"
 "StreamSurfing created": "StreamSurfing created"
 "Play the created StreamSurfing": "Play the created StreamSurfing"
+"Stream surf model id": "Model"
+"Stream surf media id": "Media"
+"Stream surf media player id": "Media Player"
+"Stream surf wave id": "Wave"
 "Remove the line": "Remove the line"
 "Add a new segment at the curent reading position": "Add a new Segment (at the curent reading position)"
 "Replay from this marker": "Replay from this marker"
