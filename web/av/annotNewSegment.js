@@ -34,7 +34,7 @@ function ttgCreateNewSegment(listContainerId, playerHtmlId, annotSchemeRoute, ob
     var annotSchemeUrl = '/av/annotScheme/dev.json';
     if (annotSchemeRoute.length) {
         console.log("AnnotSchemeUrl found " + annotSchemeRoute);
-        console.log("ignoring it....");
+        //console.log("ignoring it....");
         annotSchemeUrl = annotSchemeRoute;
     }
     else{
