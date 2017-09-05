@@ -36,7 +36,7 @@ Create a new StreamSurfing with a Media and a Wave:
 [data_demo_fr.sql](https://github.com/adrien-vieilleribiere/StreamSurfing/tree/master/app/Resources/init/data_demo_fr.sql)
 - by hand: see [MANUAL_CONTENT.md](https://github.com/adrien-vieilleribiere/StreamSurfing/tree/master/MANUAL_CONTENT.md) for details.
 
-![StreamSurfing = Media + MediaPlayer + Wave; Wave = Annotation + AnnotationPlayer](https://raw.githubusercontent.com/adrien-vieilleribiere/StreamSurfing/tree/master/app/Resources/documentations/StreamSurfingDiagram.png)
+![StreamSurfing = Media + MediaPlayer + Wave; Wave = Annotation + AnnotationPlayer](https://raw.githubusercontent.com/adrien-vieilleribiere/StreamSurfing/master/app/Resources/documentations/StreamSurfingDiagram.png)
 
 ## 3. StreamSurf ##
 Display the StreamSurfing from the route `app.php/sS/{idOfTheStreamSurfing}`, 
