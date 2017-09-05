@@ -8,11 +8,26 @@ To achieve this, this repository provide tools to:
 
 This is &alpha; version, for development purposes.
 
+### Prerequisites ###
+
+PHP, Composer and Mysql are requiered.
+
+#### PHP ####
+Make sure you can interpret [PHP code](https://en.wikipedia.org/wiki/PHP).
+#### Composer ####
+Install [Composer](https://getcomposer.org/).
+#### MySQL ####
+Create a [MySQL database](https://en.wikipedia.org/wiki/MySQL) (named symfony by default)
+and grant it to a MySql User ('root' as default).
+#### git ####
+Get the repository ([git](https://en.wikipedia.org/wiki/Git), [clone](https://help.github.com/articles/cloning-a-repository/)):
+
+```bash
+git clone https://github.com/adrien-vieilleribiere/StreamSurfing
+```
 ## 1. Installation ##
 
-### Install dependancies ###
-
-In the root directory (StreamSurfing),  use [Composer](https://getcomposer.org/) by running the following command:
+In the root directory (StreamSurfing),  run the following command:
 ```bash
 composer install
 ```
@@ -29,7 +44,7 @@ Add data with one of the provided `config_*.sql` in [app/Resources/init](https:/
 
 For details of what is added, see [MANUAL_INSTALL.md](https://github.com/adrien-vieilleribiere/StreamSurfing/tree/master/MANUAL_INSTALL.md)
 
-## 2. Add Content ##
+## 3. Add Content ##
 
 Create a new StreamSurfing with a Media and a Wave:
 - by a sql dump: 
@@ -38,6 +53,6 @@ Create a new StreamSurfing with a Media and a Wave:
 
 ![StreamSurfing = Media + MediaPlayer + Wave; Wave = Annotation + AnnotationPlayer](https://raw.githubusercontent.com/adrien-vieilleribiere/StreamSurfing/master/app/Resources/documentations/StreamSurfingDiagram.png)
 
-## 3. StreamSurf ##
+## 4. StreamSurf ##
 Display the StreamSurfing from the route `app.php/sS/{idOfTheStreamSurfing}`, 
 e.g. `app.php/sS/1` for the running example.
