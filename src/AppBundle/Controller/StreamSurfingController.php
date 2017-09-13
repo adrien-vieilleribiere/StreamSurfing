@@ -158,7 +158,6 @@ class StreamSurfingController extends Controller
                 'annotType' => $annot -> getAnnotationType(),
                 'annotScheme' => $annot -> getScheme(),
                 'annotName' => $annot -> getName(),
-                'annotScheme' => $annotScheme,
                 'annotSchemeRoute' => $annotSchemeRoute
             ]);
         dump($waveRenderer);

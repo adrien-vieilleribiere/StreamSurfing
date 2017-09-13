@@ -28,6 +28,7 @@ function ttgAnnotationUlEdit(objectParams) {
 			'singleFtxt', 
 			objectParams.playerHtmlId);
 	}
+	console.log(objectParams);
     var annotNum=objectParams['annotsArray'].length;
 	for (var iAnnot = 0; iAnnot < annotNum; iAnnot++) {
 		var newUlRoot = document.createElement("ul");
@@ -38,36 +39,10 @@ function ttgAnnotationUlEdit(objectParams) {
 		for (var segmentkey in objectParams['annotsArray'][iAnnot]['data']) {
 			var segmentObject = objectParams['annotsArray'][iAnnot]['data'][segmentkey];
             // console.log(segmentObject);
-			var newli = document.createElement("li");
-			var liId = objectParams.chartContainerId
-                + segmentkey;
-			if (annotNum > 1) {
-                liId = objectParams.chartContainerId
-                    + 'li' + iAnnot
-                    + '-' + segmentkey;
-            }
-			// newli.append(document.createTextNode(segmentObject.title));
-            newli.setAttribute("id", liId);
-            newli.setAttribute("class", "list-group-item");
-			newli.setAttribute("data-type", "marker");
-			newli.setAttribute("data-playlist-item-start", segmentObject['item_start']);
-			newli.setAttribute("data-start", segmentObject.time_start);
-			newli.setAttribute("data-playlist-item-end", segmentObject.item_end);
-			newli.setAttribute("data-end", segmentObject.time_end);
-            newli = newUlRoot.appendChild(newli);
-			addDeleteLine(newli, liId);
-            ttgAddReplayTimeBlock(segmentObject, liId, 'start' , objectParams);
-            ttgAddSetTimeBlock(segmentObject, liId, 'start', objectParams);
-            newli.append(ttgSegmentEditTitle(segmentObject, liId, objectParams));
-            ttgAddReplayTimeBlock(segmentObject, liId, 'end' , objectParams);
-            ttgAddSetTimeBlock(segmentObject, liId, 'end', objectParams);
-
-            /*
-            newli.setAttribute(
-                "onclick",
-                "document.getElementById('" + objectParams.playerHtmlId + "')"
-                    + '.ttgSeekTo(' + segmentObject.time_start + ')');
-            */
+            ttgCreateNewSegment(objectParams.chartContainerId,
+                objectParams.playerHtmlId,
+                ['/av/annotScheme/dev.json'],
+                segmentObject );
 		}
 	}
 }

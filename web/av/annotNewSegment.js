@@ -2,21 +2,41 @@
 // Effect: insert below objectParams.chartContainerId a <ul> for each object
 //	with one <li> clicable by segment in data
 // 	click a li will make the playHead move to the start of the corresponding segment.
-function ttgCreateNewSegment(listContainerId, playerHtmlId, annotSchemeRoute, objectParams ) {
+function ttgCreateNewSegment (listContainerId, playerHtmlId, annotSchemeRoute, objectParams) {
     var objectParamsCopy = Object;
     $.extend(true,objectParamsCopy, objectParams);
     // console.log(annotSchemeRoute);
-    var curOffset = document.getElementById(playerHtmlId).ttgGetCurrentTime() ;
-    var curPlaylistItem = document.getElementById(playerHtmlId).ttgGetPlaylistIndex() ;
+    var curOffset = 0 ;
+    if (objectParams.time_start) {
+        curOffset = objectParams.time_start;
+    }
+    else{
+        curOffset = document.getElementById(playerHtmlId).ttgGetCurrentTime() ;
+    }
+    var curPlaylistItem = 0;
+    if (objectParams.item_start) {
+       curPlaylistItem = objectParams.item_start;
+    }
+    else{
+         curPlaylistItem = document.getElementById(playerHtmlId).ttgGetPlaylistIndex();
+    }
+    var curTitle = '';
+    if (objectParams.title) {
+       curTitle = objectParams.title;
+    }
+    var curValDim1=null;
+    if (objectParams.valDim1) {
+       curValDim1 = objectParams.valDim1;
+    }
+    var curValDim2=null;
+    if (objectParams.valDim2) {
+       curValDim2 = objectParams.valDim2;
+    }
     var newli = document.createElement("li");
     var liId = 'seg' +
         (Math.round(1210201212120141542
             * Math.random()));
-    /*if (annotNum > 1) {
-        liId = objectParams.chartContainerId
-            + 'li' + iAnnot
-            + '-' + segmentkey;}
-    */
+
     // newli.append(document.createTextNode(segmentObject.title));
     newli.setAttribute("id", liId);
     newli.setAttribute("class", "list-group-item");
@@ -30,18 +50,14 @@ function ttgCreateNewSegment(listContainerId, playerHtmlId, annotSchemeRoute, ob
     // test existence of annotContainerToInsertId, (add node if not ?)
     newli = document.getElementById(annotContainerToInsertId).appendChild(newli);
     var annotSchemeUrl = '/av/annotScheme/basic.json';
-    var annotSchemeUrl = '/av/annotScheme/dim1.json';
-    var annotSchemeUrl = '/av/annotScheme/dev.json';
     if (annotSchemeRoute.length) {
-        console.log("AnnotSchemeUrl found " + annotSchemeRoute);
-        //console.log("ignoring it....");
+        //console.log("AnnotSchemeUrl found " + annotSchemeRoute);
         annotSchemeUrl = annotSchemeRoute;
     }
     else{
         console.log("No annotSchemeUrl found" + annotSchemeUrl);
     }
     //  var annotSchemeObj = JSON.parse('[{"deleteLine": "true"},{"replayStart":"true"},{"setStart":"true"},{"setTitle":"true"},{"replayEnd":"true"},{"setEnd":"true"},{"setValDim1":{"type":"numeric","min":"-1","max":"1","default":"0","name":"likeValue"}}]');
-    //$.get(annotSchemeUrl, function (data) {
     $.get(annotSchemeUrl, function (data) {
         //console.log(data);
         for (var segValuePos = 0; segValuePos < data.length; segValuePos++) {
@@ -75,6 +91,10 @@ function ttgCreateNewSegment(listContainerId, playerHtmlId, annotSchemeRoute, ob
                         var newSeg = new Array();
                         newSeg['title'] = '';
                         objectParamsCopy['playerHtmlId'] = playerHtmlId;
+                        if(curTitle){
+                            objectParamsCopy['title'] = curTitle;
+                            newSeg['title'] = curTitle;
+                        }
                         newli.append(ttgSegmentEditTitle(newSeg, liId, objectParamsCopy));
                         break;
                     case 'replayEnd' :
@@ -98,10 +118,11 @@ function ttgCreateNewSegment(listContainerId, playerHtmlId, annotSchemeRoute, ob
                         ttgCreateSetTimeBlock(newSeg, liId, 'end' ,playerHtmlId, objectParams);
                         break;
                     case 'setValDim1' :
-                        ttgCreateValueBlock(liId, data[segValuePos]['setValDim1']);
+                        //console.log(data[segValuePos]['setValDim1']);
+                        ttgCreateValueBlock(liId, data[segValuePos]['setValDim1'], curValDim1);
                         break;
                     case 'setValDim2' :
-                        ttgCreateValueBlock(liId, data[segValuePos]['setValDim2']);
+                        ttgCreateValueBlock(liId, data[segValuePos]['setValDim2'], curValDim2);
                         break;
                     case 'keybordShortcuts':
                         // console.log(data[segValuePos]['keybordShortcuts']);
@@ -260,16 +281,19 @@ function ttgCreateSetTimeBlock(segmentObject, containerNodeId, typeAnnot , playe
     containerNode.appendChild(setTimeInput);
 }
 
-function ttgCreateValueBlock(containerNodeId, paramObject){
-    //console.log(paramObject);
+function ttgCreateValueBlock(containerNodeId, paramObject, forcedValue){
+    // console.log(paramObject);
     var containerNode = document.getElementById(containerNodeId);
     setValInput = document.createElement("input");
     setValInput.id =
-        paramObject.name
-        + containerNodeId;
+        containerNodeId
+        + '_'
+        + paramObject.name;
     setValInput.setAttribute(
         'name',
-        paramObject.name + containerNodeId);
+        containerNodeId
+        + '_'
+        + paramObject.name );
     switch (paramObject['type']) {
         case 'numeric':
             setValInput.setAttribute('type', 'number');
@@ -328,10 +352,17 @@ function ttgCreateValueBlock(containerNodeId, paramObject){
             'style',
             'margin:0.5em; width:4em');
     }
-    if (paramObject['default']) {
-        setValInput.setAttribute(
+    if (forcedValue) {
+         setValInput.setAttribute(
             'value',
-            paramObject['default']);
+            forcedValue);
+    }
+    else {
+        if (paramObject['default']) {
+            setValInput.setAttribute(
+                'value',
+                paramObject['default']);
+        }
     }
     containerNode.appendChild(setValInput);
 }
@@ -509,11 +540,17 @@ function applyShortCutActionLi(actionName, actionParams, objectParams) {
             else {
                 console.log('actionParams[1] not found');
             }
-            // xxxxx todo parameter the path
+            // console.log(actionParams[0]);  console.log(objectParams);
+            var newSeg = new Array();
+            var itemStartKey = 'item_' + 'start';
+            var timeStartKey = 'time_' + 'start';
+            newSeg[itemStartKey] = document.getElementById(objectParams['playerHtmlId']).ttgGetPlaylistIndex();
+            newSeg[timeStartKey] = document.getElementById(objectParams['playerHtmlId']).ttgGetCurrentTime();
             ttgCreateNewSegment( 'ttgAnUlBody' + objectParams['playerHtmlId'],
                 objectParams['playerHtmlId'],
-                ['/av/annotScheme/dev.json'],
-                objectParamsCopy);
+                [actionParams[0]],
+                newSeg
+                );
             break;
         case 'goToPreviousLine':
             if (document.getElementById(objectParams['liId']).previousElementSibling
