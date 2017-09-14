@@ -6,6 +6,13 @@
     </h2>
 {% endblock %}
 {% block body %}
+
+    {{ include('annotation/ulEdit/ulBlock_meta.html.twig',
+    {  'media': media,
+        'modalId': 'metaModal{{ playerHtmlId }}',
+        'rootId':'progressUl'}) }}
+    <br/>
+
     <h3 class="bg-inverse text-white">
         {{ "Choose Export Type"|trans }}
     </h3>
@@ -13,8 +20,8 @@
             id="exportFormat"
             class="form-control">
         <option value="json_avTV">Annotation (json)</option>
-        <option value="csv_av">Annotation (csv)</option>
-        <option value="srtFile" selected="selected">Annotation (srt)</option>
+        <option value="csv_av" selected="selected">Annotation (csv)</option>
+        <option value="srtFile">Annotation (srt)</option>
        <!-- <option value="html-ul">Fiche de la vidéo et navigation (html)</option> -->
        <!-- <option value="json-params">Préférences (json)</option> -->
     </select>
@@ -25,6 +32,7 @@
             , 'ttgAnUlBody{{ playerHtmlId }}'
             , 'export-html-ul-info'
             , 'export-html-ul-data'
+            , '{{ annotSchemeRoute }}'
             , '{{ playerHtmlId }}')"
            class="btn btn-primary active btn-group container-fluid">{{ "Export"|trans }} <span
                     class="glyphicon glyphicon-save" aria-hidden="true"></span></a>
