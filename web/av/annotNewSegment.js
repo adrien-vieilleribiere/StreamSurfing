@@ -6,19 +6,33 @@ function ttgCreateNewSegment (listContainerId, playerHtmlId, annotSchemeRoute, o
     var objectParamsCopy = Object;
     $.extend(true,objectParamsCopy, objectParams);
     // console.log(annotSchemeRoute);
-    var curOffset = 0 ;
+    var curOffsetStart = 0 ;
     if (objectParams.time_start) {
-        curOffset = objectParams.time_start;
+        curOffsetStart = objectParams.time_start;
     }
     else{
-        curOffset = document.getElementById(playerHtmlId).ttgGetCurrentTime() ;
+        curOffsetStart = document.getElementById(playerHtmlId).ttgGetCurrentTime() ;
     }
-    var curPlaylistItem = 0;
+    var curOffsetEnd = 0 ;
+    if (objectParams.time_end) {
+        curOffsetEnd = objectParams.time_end;
+    }
+    else{
+        curOffsetEnd = document.getElementById(playerHtmlId).ttgGetCurrentTime() ;
+    }
+    var curPlaylistItemStart = 0;
     if (objectParams.item_start) {
-       curPlaylistItem = objectParams.item_start;
+       curPlaylistItemStart = objectParams.item_start;
     }
     else{
-         curPlaylistItem = document.getElementById(playerHtmlId).ttgGetPlaylistIndex();
+         curPlaylistItemStart = document.getElementById(playerHtmlId).ttgGetPlaylistIndex();
+    }
+    var curPlaylistItemEnd = 0;
+    if (objectParams.item_end) {
+       curPlaylistItemEnd = objectParams.item_end;
+    }
+    else{
+         curPlaylistItemStart = document.getElementById(playerHtmlId).ttgGetPlaylistIndex();
     }
     var curTitle = '';
     if (objectParams.title) {
@@ -41,12 +55,12 @@ function ttgCreateNewSegment (listContainerId, playerHtmlId, annotSchemeRoute, o
     newli.setAttribute("id", liId);
     newli.setAttribute("class", "list-group-item");
     newli.setAttribute("data-type", "marker");
-    newli.setAttribute("data-playlist-item-start", curPlaylistItem);
-    newli.setAttribute("data-start", curOffset);
-    newli.setAttribute("data-playlist-item-end", curPlaylistItem);
-    newli.setAttribute("data-end", curOffset);
+    newli.setAttribute("data-playlist-item-start", curPlaylistItemStart);
+    newli.setAttribute("data-start", curOffsetStart);
+    newli.setAttribute("data-playlist-item-end", curPlaylistItemEnd);
+    newli.setAttribute("data-end", curOffsetEnd);
 
-    var annotContainerToInsertId = 'ul' + curPlaylistItem + listContainerId;
+    var annotContainerToInsertId = 'ul' + curPlaylistItemStart + listContainerId;
     // test existence of annotContainerToInsertId, (add node if not ?)
     newli = document.getElementById(annotContainerToInsertId).appendChild(newli);
     var annotSchemeUrl = '/av/annotScheme/basic.json';
@@ -73,8 +87,8 @@ function ttgCreateNewSegment (listContainerId, playerHtmlId, annotSchemeRoute, o
                         var newSeg = new Array();
                         var itemStartKey = 'item_' + 'start';
                         var timeStartKey = 'time_' + 'start';
-                        newSeg[itemStartKey] = curPlaylistItem;
-                        newSeg[timeStartKey] = curOffset;
+                        newSeg[itemStartKey] = curPlaylistItemStart;
+                        newSeg[timeStartKey] = curOffsetStart;
                         objectParamsCopy['playerHtmlId'] = playerHtmlId;
                         ttgAddReplayTimeBlock(newSeg, liId, 'start' , objectParamsCopy);
                         break;
@@ -82,8 +96,8 @@ function ttgCreateNewSegment (listContainerId, playerHtmlId, annotSchemeRoute, o
                         var newSeg = new Array();
                         var itemStartKey = 'item_' + 'start';
                         var timeStartKey = 'time_' + 'start';
-                        newSeg[itemStartKey] = curPlaylistItem;
-                        newSeg[timeStartKey] = curOffset;
+                        newSeg[itemStartKey] = curPlaylistItemStart;
+                        newSeg[timeStartKey] = curOffsetStart;
                         //(segmentObject, containerNodeId, typeAnnot , playerHtmlId, objectParams)
                         ttgCreateSetTimeBlock(newSeg, liId, 'start', playerHtmlId, objectParams);
                         break;
@@ -112,8 +126,8 @@ function ttgCreateNewSegment (listContainerId, playerHtmlId, annotSchemeRoute, o
                         var newSeg = new Array();
                         var itemStartKey = 'item_' + 'end';
                         var timeStartKey = 'time_' + 'end';
-                        newSeg[itemStartKey] = curPlaylistItem;
-                        newSeg[timeStartKey] = curOffset;
+                        newSeg[itemStartKey] = curPlaylistItemEnd;
+                        newSeg[timeStartKey] = curOffsetEnd;
                         //(segmentObject, containerNodeId, typeAnnot , playerHtmlId, objectParams)
                         ttgCreateSetTimeBlock(newSeg, liId, 'end' ,playerHtmlId, objectParams);
                         break;

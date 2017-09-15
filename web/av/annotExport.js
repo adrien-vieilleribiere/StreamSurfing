@@ -210,8 +210,8 @@ function showExportWithCopy (outputContainerId, textAreaId, stringValueToShow) {
     }
     newTA.appendChild(document.createTextNode(stringValueToShow));
     //newTA.setAttribute("cols","74");
-    newTA.setAttribute("rows","10");
-    newTA.setAttribute("style","width:100%");
+    newTA.setAttribute("rows", "10");
+    newTA.setAttribute("style", "width:100%");
     document
         .getElementById(outputContainerId)
         .appendChild(newTA);
