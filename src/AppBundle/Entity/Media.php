@@ -190,9 +190,8 @@ class Media
     public function getMediaTypeFromUrl()
     {
         $urlPi=pathinfo($this->getUrl());
-        switch ($urlPi['dirname']){
+        switch ($urlPi['dirname']) {
             case 'http://pul-lup.com/sound':
-
                 return 12000; // pul-lup audio
                 break;
             case 'https://www.youtube.com':
@@ -215,8 +214,22 @@ class Media
                     }
                 }
                 break;
+            // xxx add soundcloud, vimeo, mkv or avi when a corresponding renderer is ready
             default:
-                return 0; // unknown
+                switch ($urlPi['extension']) {
+                    case 'mp3':
+                        return 10001;
+                        break;
+                    case 'ogg':
+                        return 10002;
+                        break;
+                    case 'mp4':
+                        return 20001;
+                        break;
+                    default:
+                        return 0; // unknown
+                }
+
         }
     }
 
